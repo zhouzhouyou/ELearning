@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.yuri.elearning.ui.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/home_fragment">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.yuri.elearning.ui.calendar.CalendarFragment"
+        android:label="@string/calendar"
+        tools:layout="@layout/calendar_fragment" />
+    <fragment
+        android:id="@+id/nav_myClasses"
+        android:name="com.yuri.elearning.ui.myClasses.MyClassesFragment"
+        android:label="@string/my_classes"
+        tools:layout="@layout/my_classes_fragment" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.yuri.elearning.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@xml/app_preference" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.yuri.elearning.ui.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/nav_course"
+        android:name="com.yuri.elearning.ui.course.CourseFragment"
+        android:label="@string/course"
+        tools:layout="@layout/course_fragment" />
+
+    <navigation
+        android:id="@+id/register_navigation"
+        app:startDestination="@id/nav_enterUserProfile" >
+        <fragment
+            android:id="@+id/nav_chooseUserPassword"
+            android:name="com.yuri.elearning.ui.authentication.ChooseUserPasswordFragment"
+            android:label="choose_user_password"
+            tools:layout="@layout/choose_user_password_fragment" />
+        <fragment
+            android:id="@+id/nav_enterUserProfile"
+            android:name="com.yuri.elearning.ui.authentication.EnterUserProfileFragment"
+            android:label="Enter User Profile"
+            tools:layout="@layout/enter_user_profile_fragment">
+            <action
+                android:id="@+id/action_nav_enterUserProfile_to_nav_chooseUserPassword"
+                app:destination="@id/nav_chooseUserPassword" />
+        </fragment>
+    </navigation>
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.yuri.elearning.ui.authentication.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_register_navigation"
+            app:destination="@id/register_navigation" />
+    </fragment>
+
+</navigation>

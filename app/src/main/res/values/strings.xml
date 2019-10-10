@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">ELearning</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">User Name</string>
+    <string name="nav_header_subtitle">User Description</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="home">Home</string>
+    <string name="my_classes">My Classes</string>
+    <string name="calendar">Calendar</string>
+    <string name="settings">Settings</string>
+    <string name="search">Search</string>
+    <string name="channel">Channel</string>
+    <string name="recommend">Recommend</string>
+    <string name="timeline">Timeline</string>
+    <string name="action_settings">Settings</string>
+    <string name="place_holder">place_holder</string>
+
+    <string-array name="tab">
+        <item>@string/channel</item>
+        <item>@string/recommend</item>
+        <item>@string/timeline</item>
+    </string-array>
+
+    <string name="course">course</string>
+    <string name="others">others</string>
+    <string name="profile">profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="enter_profile_data">Enter Profile Data</string>
+    <string name="next">Next</string>
+    <string name="login">login</string>
+    <string name="account">account</string>
+    <string name="register">register</string>
+    <string name="register_and_login">register and login</string>
+    <string name="please_check_input">Please Check  Input</string>
+    <string name="wrong_password_or_account">Wrong Password Or Account</string>
+</resources>
