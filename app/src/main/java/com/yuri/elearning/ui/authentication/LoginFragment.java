@@ -39,33 +39,6 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
         handleBackPressed();
     }
 
-    private void handleAuthenticationStateChanged(View root) {
-        mVM.authenticationState.observe(getViewLifecycleOwner(), authenticationState -> {
-            switch (authenticationState) {
-                case AUTHENTICATED:
-                    mNavController.popBackStack();
-                    break;
-                case INVALID_AUTHENTICATION:
-                    Snackbar.make(root, getString(R.string.wrong_password_or_account), Snackbar.LENGTH_SHORT).show();
-                    break;
-            }
-        });
-    }
-
-    private void handleBackPressed() {
-        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                mVM.refuseAuthentication();
-                mNavController.popBackStack(R.id.nav_home, false);
-            }
-        });
-    }
-
-    private void handleRegister() {
-        mRegisterButton.setOnClickListener(v -> mNavController.navigate(R.id.action_loginFragment_to_register_navigation));
-    }
-
     private void handleLogin() {
         mLoginButton.setOnClickListener(v -> {
             String tempAccount = mAccount.getText().toString();
@@ -81,6 +54,33 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
                 }
             }
             Snackbar.make(v, getString(R.string.wrong_password_or_account), Snackbar.LENGTH_SHORT).show();
+        });
+    }
+
+    private void handleAuthenticationStateChanged(View root) {
+        mVM.authenticationState.observe(getViewLifecycleOwner(), authenticationState -> {
+            switch (authenticationState) {
+                case AUTHENTICATED:
+                    mNavController.popBackStack();
+                    break;
+                case INVALID_AUTHENTICATION:
+                    Snackbar.make(root, getString(R.string.wrong_password_or_account), Snackbar.LENGTH_SHORT).show();
+                    break;
+            }
+        });
+    }
+
+    private void handleRegister() {
+        mRegisterButton.setOnClickListener(v -> mNavController.navigate(R.id.action_loginFragment_to_register_navigation));
+    }
+
+    private void handleBackPressed() {
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                mVM.refuseAuthentication();
+                mNavController.popBackStack(R.id.nav_home, false);
+            }
         });
     }
 

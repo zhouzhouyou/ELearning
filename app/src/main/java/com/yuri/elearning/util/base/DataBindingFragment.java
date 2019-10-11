@@ -11,11 +11,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 public abstract class DataBindingFragment<DB extends ViewDataBinding> extends AbstractBaseFragment {
+    protected DB db;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        DB db = DataBindingUtil.inflate(inflater, getLayout(), container, false);
+        db = DataBindingUtil.inflate(inflater, getLayout(), container, false);
         init(db);
         return db.getRoot();
     }

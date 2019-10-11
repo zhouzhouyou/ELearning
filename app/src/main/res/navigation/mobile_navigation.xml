@@ -10,6 +10,14 @@
         android:name="com.yuri.elearning.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_nav_home_to_nav_course"
+            app:destination="@id/nav_course">
+            <argument
+                android:name="cid"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </action>
     </fragment>
     <fragment
         android:id="@+id/nav_calendar"
@@ -35,7 +43,12 @@
         android:id="@+id/nav_course"
         android:name="com.yuri.elearning.ui.course.CourseFragment"
         android:label="@string/course"
-        tools:layout="@layout/course_fragment" />
+        tools:layout="@layout/course_fragment" >
+        <argument
+            android:name="cid"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 
     <navigation
         android:id="@+id/register_navigation"
@@ -43,12 +56,12 @@
         <fragment
             android:id="@+id/nav_chooseUserPassword"
             android:name="com.yuri.elearning.ui.authentication.ChooseUserPasswordFragment"
-            android:label="choose_user_password"
+            android:label="@string/choose_user_password"
             tools:layout="@layout/choose_user_password_fragment" />
         <fragment
             android:id="@+id/nav_enterUserProfile"
             android:name="com.yuri.elearning.ui.authentication.EnterUserProfileFragment"
-            android:label="Enter User Profile"
+            android:label="@string/enter_user_profile"
             tools:layout="@layout/enter_user_profile_fragment">
             <action
                 android:id="@+id/action_nav_enterUserProfile_to_nav_chooseUserPassword"
@@ -64,5 +77,10 @@
             android:id="@+id/action_loginFragment_to_register_navigation"
             app:destination="@id/register_navigation" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_message"
+        android:name="com.yuri.elearning.ui.message.MessageMainFragment"
+        android:label="@string/message"
+        tools:layout="@layout/message_main_fragment" />
 
 </navigation>

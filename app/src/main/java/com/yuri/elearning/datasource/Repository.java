@@ -7,12 +7,15 @@ import com.yuri.elearning.datasource.database.dao.CourseDao;
 import com.yuri.elearning.datasource.database.dao.UserDao;
 import com.yuri.elearning.datasource.database.entity.Course;
 import com.yuri.elearning.datasource.database.entity.User;
-import com.yuri.elearning.datasource.database.repository.CourseAsyncTasks.insertCourseTask;
 import com.yuri.elearning.datasource.database.repository.UserAsyncTasks.insertUserTask;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import androidx.lifecycle.LiveData;
+
+import static com.yuri.elearning.datasource.database.repository.CourseAsyncTasks.insertCourseTask;
+import static com.yuri.elearning.datasource.database.repository.CourseAsyncTasks.queryCourseTask;
 
 public class Repository {
     private UserDao mUserDao;
@@ -34,6 +37,15 @@ public class Repository {
 
     public LiveData<List<Course>> getAllCourses() {
         return mAllCourses;
+    }
+
+    public Course queryCourse(int cid) {
+        try {
+            return new queryCourseTask(mCourseDao).execute(cid).get();
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void insertUser(User... users) {

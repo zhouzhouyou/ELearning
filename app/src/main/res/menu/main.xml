@@ -2,11 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:icon="@drawable/ic_search"
         android:id="@+id/action_search"
         android:title="@string/search"
         android:orderInCategory="100"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView" />
+
+    <item
+        android:icon="@drawable/ic_message"
+        android:id="@id/nav_message"
+        android:orderInCategory="200"
+        android:title="@string/message"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/nav_settings"

@@ -21,6 +21,19 @@ public class CourseAsyncTasks {
         }
     }
 
+    public static class queryCourseTask extends AsyncTask<Integer, Void, Course> {
+        private CourseDao mCourseDao;
+
+        public queryCourseTask(CourseDao courseDao) {
+            mCourseDao = courseDao;
+        }
+
+        @Override
+        protected Course doInBackground(Integer... integers) {
+            return mCourseDao.queryCourse(integers[0]);
+        }
+    }
+
     public static class populateCourseDbTask extends AsyncTask<Void, Void, Void> {
         private final CourseDao mCourseDao;
 

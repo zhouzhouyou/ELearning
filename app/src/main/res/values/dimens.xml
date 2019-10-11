@@ -7,6 +7,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="title_text_size">24sp</dimen>
     <dimen name="recycler_item_margin">8dp</dimen>
-    <dimen name="tv_header_margin">160dp</dimen>
+    <dimen name="title_header_margin">160dp</dimen>
     <dimen name="tv_title">36sp</dimen>
+    <dimen name="tv_margin">16dp</dimen>
+    <dimen name="tv_header_margin">32dp</dimen>
 </resources>

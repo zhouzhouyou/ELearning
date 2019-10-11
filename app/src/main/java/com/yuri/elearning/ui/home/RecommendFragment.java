@@ -53,7 +53,6 @@ public class RecommendFragment extends ViewModelFragment<CourseViewModel> {
     private class CourseAdapter extends DataBindingRecyclerAdapter<CourseRecyclerItemBinding, Course> {
         public CourseAdapter(LayoutInflater layoutInflater, List<Course> dataList, int layoutId, int brId) {
             super(layoutInflater, dataList, layoutId, brId);
-            Log.i(TAG, "CourseAdapter: ");
         }
 
         @Override

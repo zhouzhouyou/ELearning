@@ -39,4 +39,11 @@
     <string name="register_and_login">register and login</string>
     <string name="please_check_input">Please Check  Input</string>
     <string name="wrong_password_or_account">Wrong Password Or Account</string>
+    <string name="message">message</string>
+    <string name="enter_user_profile">Enter User Profile</string>
+    <string name="choose_user_password">choose user password</string>
+    <string name="description">description</string>
+    <string name="syllabus">syllabus</string>
+    <string name="teacher">teacher</string>
+    <string name="cost">cost</string>
 </resources>

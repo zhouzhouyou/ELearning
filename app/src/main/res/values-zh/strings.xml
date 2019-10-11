@@ -16,11 +16,6 @@
     <string name="recommend">推荐</string>
     <string name="timeline">动态</string>
 
-    <string-array name="tab">
-        <item>@string/channel</item>
-        <item>@string/recommend</item>
-        <item>@string/timeline</item>
-    </string-array>
     <string name="action_settings">设置</string>
     <string name="course">课程</string>
     <string name="others">其他</string>
@@ -37,4 +32,11 @@
     <string name="register_and_login">注册并登录</string>
     <string name="wrong_password_or_account">错误的账户或密码</string>
     <string name="please_check_input">请检查输入</string>
+    <string name="choose_user_password">选择账户密码</string>
+    <string name="enter_user_profile">输入个人资料</string>
+    <string name="message">消息</string>
+    <string name="teacher">教师</string>
+    <string name="cost">价格</string>
+    <string name="description">描述</string>
+    <string name="syllabus">大纲</string>
 </resources>

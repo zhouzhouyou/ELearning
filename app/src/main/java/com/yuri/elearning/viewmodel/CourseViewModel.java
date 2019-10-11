@@ -31,4 +31,8 @@ public class CourseViewModel extends BaseViewModel {
     public LiveData<List<Course>> getAllCourses() {
         return allCourses;
     }
+
+    public Course queryCourse(int cid) {
+        return mRepository.queryCourse(cid);
+    }
 }

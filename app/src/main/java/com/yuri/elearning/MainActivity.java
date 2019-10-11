@@ -77,7 +77,6 @@ public class MainActivity extends BaseActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         initialSearchView(menu);
-        Log.i(TAG, "onCreateOptionsMenu: ");
         return true;
     }
 
@@ -107,7 +106,6 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(TAG, "onOptionsItemSelected: " + item.getItemId());
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //navController.navigate(R.id.nav_settings);
         return NavigationUI.onNavDestinationSelected(item, navController)
                 || super.onOptionsItemSelected(item);
     }

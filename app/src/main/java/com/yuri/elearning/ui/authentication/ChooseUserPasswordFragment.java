@@ -37,6 +37,24 @@ public class ChooseUserPasswordFragment extends ViewModelFragment<RegistrationVi
         initBackPressed();
     }
 
+    private void initRegisterLogin() {
+        mRegisterLogin.setOnClickListener(v -> {
+            String tempAccount = mAccount.getText().toString();
+            String password = mPassword.getText().toString();
+            if (!tempAccount.equals("") && !password.equals("")) {
+                int account;
+                try {
+                    account = Integer.valueOf(tempAccount);
+                    mVM.createAccountAndLogin(account, password);
+                    return;
+                } catch (Exception e) {
+                    //ignore
+                }
+            }
+            Snackbar.make(v, getString(R.string.please_check_input), Snackbar.LENGTH_SHORT).show();
+        });
+    }
+
     private void handleRegistrationStateChanged() {
         mVM.getRegistrationState().observe(getViewLifecycleOwner(), registrationState -> {
             if (registrationState == RegistrationState.REGISTRATION_COMPLETED) {
@@ -56,24 +74,6 @@ public class ChooseUserPasswordFragment extends ViewModelFragment<RegistrationVi
                         mNavController.popBackStack(R.id.nav_login, false);
                     }
                 });
-    }
-
-    private void initRegisterLogin() {
-        mRegisterLogin.setOnClickListener(v -> {
-            String tempAccount = mAccount.getText().toString();
-            String password = mPassword.getText().toString();
-            if (!tempAccount.equals("") && !password.equals("")) {
-                int account;
-                try {
-                    account = Integer.valueOf(tempAccount);
-                    mVM.createAccountAndLogin(account, password);
-                    return;
-                } catch (Exception e) {
-                    //ignore
-                }
-            }
-            Snackbar.make(v, getString(R.string.please_check_input), Snackbar.LENGTH_SHORT).show();
-        });
     }
 
     @Override
