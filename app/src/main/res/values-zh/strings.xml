@@ -39,4 +39,13 @@
     <string name="cost">价格</string>
     <string name="description">描述</string>
     <string name="syllabus">大纲</string>
+    <string name="application_information">应用信息</string>
+    <string name="see_application_information">查看应用信息</string>
+    <string name="log_out">退出登录</string>
+    <string name="are_you_sure_to_log_out">确定注销登录？</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="password">密码</string>
+    <string name="language">语言</string>
+    <string name="default_language">默认语言</string>
 </resources>

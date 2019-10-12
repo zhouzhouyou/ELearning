@@ -23,7 +23,7 @@ public class CourseFragment extends DataBindingFragment<CourseFragmentBinding> {
     @Override
     protected void init(CourseFragmentBinding courseFragmentBinding) {
         mCourse.observe(getViewLifecycleOwner(), course -> db.setCourse(course));
-        mViewModel = ViewModelProviders.of(this).get(CourseViewModel.class);
+        mViewModel = ViewModelProviders.of(requireActivity()).get(CourseViewModel.class);
     }
 
     @Override

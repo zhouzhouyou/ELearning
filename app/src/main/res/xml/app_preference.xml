@@ -1,6 +1,14 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
     <Preference
+        android:key="@string/application_information"
+        android:title="@string/application_information"
+        android:summary="@string/see_application_information"/>
+
+    <Preference
+        android:key="@string/log_out"
+        android:title="@string/log_out"/>
+    <Preference
         android:key="basic_preference"
         android:title="basic_preference"
         android:summary="summary_basic_preference"/>
@@ -10,6 +18,14 @@
         android:title="preference with key"
         android:summary="the preference has an icon"
         android:icon="@drawable/ic_settings"/>
+
+    <ListPreference
+        android:icon="@drawable/ic_language"
+        android:key="@string/language"
+        android:title="@string/language"
+        android:entries="@array/languages"
+        android:entryValues="@array/languages"/>
+
 
     <PreferenceCategory
         android:title="inline_preference">

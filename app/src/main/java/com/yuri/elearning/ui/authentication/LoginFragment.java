@@ -1,5 +1,6 @@
 package com.yuri.elearning.ui.authentication;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import com.yuri.elearning.util.base.ViewModelFragment;
 import com.yuri.elearning.viewmodel.LoginViewModel;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -20,6 +22,12 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
     private Button mRegisterButton;
     private EditText mAccount;
     private EditText mPassword;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(false);
+    }
 
     @Override
     protected void initVM() {
@@ -83,6 +91,7 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
             }
         });
     }
+
 
     @Override
     protected int getLayout() {

@@ -46,4 +46,20 @@
     <string name="syllabus">syllabus</string>
     <string name="teacher">teacher</string>
     <string name="cost">cost</string>
+    <string name="application_information">application information</string>
+    <string name="see_application_information">see application information</string>
+    <string name="log_out">log out</string>
+    <string name="are_you_sure_to_log_out">are you sure to log out?</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="password">password</string>
+    <string name="language">language</string>
+    <string name="default_language">default language</string>
+    <string name="english" translatable="false">English</string>
+    <string name="simplified_chinese" translatable="false">简体中文</string>
+    <string-array name="languages">
+        <item>@string/default_language</item>
+        <item>@string/simplified_chinese</item>
+        <item>@string/english</item>
+    </string-array>
 </resources>

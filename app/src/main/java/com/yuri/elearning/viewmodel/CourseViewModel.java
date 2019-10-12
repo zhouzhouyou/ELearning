@@ -33,6 +33,11 @@ public class CourseViewModel extends BaseViewModel {
     }
 
     public Course queryCourse(int cid) {
+        if (allCourses != null && allCourses.getValue() != null) {
+            for (Course course : allCourses.getValue()) {
+                if (cid == course.cid) return course;
+            }
+        }
         return mRepository.queryCourse(cid);
     }
 }
