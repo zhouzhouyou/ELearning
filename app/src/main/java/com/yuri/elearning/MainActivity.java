@@ -57,16 +57,19 @@ public class MainActivity extends BaseActivity {
         ViewModelProvider provider = ViewModelProviders.of(this);
         mLoginViewModel = provider.get(LoginViewModel.class);
         mUserViewModel = provider.get(UserViewModel.class);
+        TextView userName = mHeaderView.findViewById(R.id.user_name);
+        TextView userDesc = mHeaderView.findViewById(R.id.user_desc);
         mLoginViewModel.authenticationState.observe(this, authenticationState -> {
             if (authenticationState == LoginViewModel.AuthenticationState.AUTHENTICATED) {
                 User user = mUserViewModel.queryUser(mLoginViewModel.account);
                 if (user != null) {
-                    TextView userName = mHeaderView.findViewById(R.id.user_name);
-                    TextView userDesc = mHeaderView.findViewById(R.id.user_desc);
                     String name = user.firstName + " " + user.lastName;
                     userName.setText(name);
                     userDesc.setText(user.description);
                 }
+            } else if (authenticationState == LoginViewModel.AuthenticationState.UNAUTHENTICATED) {
+                userName.setText(R.string.nav_header_title);
+                userDesc.setText(R.string.nav_header_subtitle);
             }
         });
     }
