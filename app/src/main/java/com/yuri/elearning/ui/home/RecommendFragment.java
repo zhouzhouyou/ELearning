@@ -24,6 +24,11 @@ public class RecommendFragment extends ViewModelFragment<CourseViewModel> {
     private CourseAdapter courseAdapter;
 
     @Override
+    protected void setMenu() {
+        //ignore
+    }
+
+    @Override
     protected void initVM() {
         Log.i(TAG, "initVM: ");
         mVM = ViewModelProviders.of(this).get(CourseViewModel.class);

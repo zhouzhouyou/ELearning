@@ -1,6 +1,9 @@
 package com.yuri.elearning.ui.authentication;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +14,7 @@ import com.yuri.elearning.util.base.ViewModelFragment;
 import com.yuri.elearning.viewmodel.LoginViewModel;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
@@ -23,10 +27,34 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
     private EditText mAccount;
     private EditText mPassword;
 
+
+    /**
+     * this fragment doesn't use other menu items
+     * @param menu menu
+     * @param inflater menu inflater
+     */
+    @Override
+    protected void initOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        //
+    }
+
+    /**
+     * override the back action item
+     * @param item item clicked
+     * @return boolean Return false to allow normal menu processing to
+     *         proceed, true to consume it here.
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            mNavController.popBackStack(R.id.nav_home, false);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(false);
     }
 
     @Override
@@ -91,7 +119,6 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
             }
         });
     }
-
 
     @Override
     protected int getLayout() {

@@ -9,6 +9,11 @@ import com.yuri.elearning.util.base.BaseFragment;
 public class ChannelFragment extends BaseFragment {
     TextView mTextView;
 
+    @Override
+    protected void setMenu() {
+        //ignore
+    }
+
     public static ChannelFragment newInstance() {
         return new ChannelFragment();
     }

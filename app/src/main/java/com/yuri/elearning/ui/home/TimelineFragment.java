@@ -16,4 +16,8 @@ public class TimelineFragment extends BaseFragment {
 
     }
 
+    @Override
+    protected void setMenu() {
+        //ignore
+    }
 }
