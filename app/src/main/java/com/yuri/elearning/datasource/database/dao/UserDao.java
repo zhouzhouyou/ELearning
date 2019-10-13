@@ -24,4 +24,7 @@ public abstract class UserDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     public abstract int updateUsers(User... users);
+
+    @Query("delete from user")
+    public abstract void deleteAll();
 }

@@ -7,6 +7,7 @@ import com.yuri.elearning.datasource.database.dao.UserDao;
 import com.yuri.elearning.datasource.database.entity.Course;
 import com.yuri.elearning.datasource.database.entity.User;
 import com.yuri.elearning.datasource.database.repository.CourseAsyncTasks;
+import com.yuri.elearning.datasource.database.repository.UserAsyncTasks;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -24,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
             new CourseAsyncTasks.populateCourseDbTask(INSTANCE).execute();
+            new UserAsyncTasks.populateUserDbTask(INSTANCE).execute();
         }
     };
 

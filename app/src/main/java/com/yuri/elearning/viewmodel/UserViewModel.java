@@ -26,6 +26,15 @@ public class UserViewModel extends BaseViewModel {
         return allUsers;
     }
 
+    public User queryUser(Integer uid) {
+        if (allUsers != null && allUsers.getValue() != null) {
+            for (User user : allUsers.getValue()) {
+                if (user.uid.equals(uid)) return user;
+            }
+        }
+        return mRepository.queryUser(uid);
+    }
+
     public void insert(User... users) {
         mRepository.insertUser(users);
     }

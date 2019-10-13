@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.yuri.elearning.R;
@@ -22,6 +23,8 @@ import androidx.navigation.Navigation;
 
 public class LoginFragment extends ViewModelFragment<LoginViewModel> {
     private NavController mNavController;
+    private ImageView mLeft;
+    private ImageView mRight;
     private Button mLoginButton;
     private Button mRegisterButton;
     private EditText mAccount;
@@ -65,6 +68,8 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
     @Override
     protected void afterCreateVM(View root) {
         mNavController = Navigation.findNavController(root);
+        mLeft = root.findViewById(R.id.left_image);
+        mRight = root.findViewById(R.id.right_image);
         mLoginButton = root.findViewById(R.id.login_button);
         mRegisterButton = root.findViewById(R.id.register_button);
         mAccount = root.findViewById(R.id.et_account);
@@ -73,6 +78,19 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
         handleAuthenticationStateChanged(root);
         handleRegister();
         handleBackPressed();
+        initPasswordEntering();
+    }
+
+    private void initPasswordEntering() {
+        mPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                mLeft.setImageResource(R.drawable.left_password);
+                mRight.setImageResource(R.drawable.right_password);
+            } else {
+                mLeft.setImageResource(R.drawable.left_normal);
+                mRight.setImageResource(R.drawable.right_normal);
+            }
+        });
     }
 
     private void handleLogin() {
@@ -89,7 +107,7 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
                     //ignore
                 }
             }
-            Snackbar.make(v, getString(R.string.wrong_password_or_account), Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(v, getString(R.string.invalid_format), Snackbar.LENGTH_SHORT).show();
         });
     }
 

@@ -27,6 +27,8 @@
     <string name="others">others</string>
     <string name="profile">profile</string>
 
+    <string name="white_space" translatable="false"> </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="first_name">First Name</string>
@@ -38,6 +40,7 @@
     <string name="register">register</string>
     <string name="register_and_login">register and login</string>
     <string name="please_check_input">Please Check  Input</string>
+    <string name="invalid_format">invalid format</string>
     <string name="wrong_password_or_account">Wrong Password Or Account</string>
     <string name="message">message</string>
     <string name="enter_user_profile">Enter User Profile</string>

@@ -9,14 +9,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.yuri.elearning.datasource.database.entity.User;
 import com.yuri.elearning.util.base.BaseActivity;
+import com.yuri.elearning.viewmodel.LoginViewModel;
+import com.yuri.elearning.viewmodel.UserViewModel;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,6 +37,8 @@ public class MainActivity extends BaseActivity {
     private ImageView mProfilePictureView;
     private SearchView mSearchView;
 
+    private LoginViewModel mLoginViewModel;
+    private UserViewModel mUserViewModel;
     @Override
     public int initLayout() {
         return R.layout.activity_main;
@@ -42,6 +50,25 @@ public class MainActivity extends BaseActivity {
         initialToolBar();
         Log.i(TAG, "init: Drawer");
         initialDrawer();
+        initViewModel();
+    }
+
+    private void initViewModel() {
+        ViewModelProvider provider = ViewModelProviders.of(this);
+        mLoginViewModel = provider.get(LoginViewModel.class);
+        mUserViewModel = provider.get(UserViewModel.class);
+        mLoginViewModel.authenticationState.observe(this, authenticationState -> {
+            if (authenticationState == LoginViewModel.AuthenticationState.AUTHENTICATED) {
+                User user = mUserViewModel.queryUser(mLoginViewModel.account);
+                if (user != null) {
+                    TextView userName = mHeaderView.findViewById(R.id.user_name);
+                    TextView userDesc = mHeaderView.findViewById(R.id.user_desc);
+                    String name = user.firstName + " " + user.lastName;
+                    userName.setText(name);
+                    userDesc.setText(user.description);
+                }
+            }
+        });
     }
 
     private void initialToolBar() {
