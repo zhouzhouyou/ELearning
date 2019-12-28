@@ -1,4 +1,4 @@
-[toc]
+[TOC]
 
 Emoji :zero: means I have do nothing yet, :keycap_ten: means I have finished it.
 
@@ -28,7 +28,6 @@ graph TD;
 	C --> E[Remote Data Source];
 	D --> F[SQLite];
 	E --> G[Web Server];
-
 ```
 
 # Activity/Fragment :two:
@@ -49,7 +48,7 @@ In order to help student choose specific type of courses, we can divide all cour
 
 Show recommend courses to students.
 
-### Timeline​ :zero:
+### Timeline :zero:
 
 Show your courses’ news or so on.
 
@@ -79,7 +78,7 @@ Login to account.
 
 If press back, navigate to home.
 
-### Register​ :five:
+### Register :five:
 
 #### Profile Data :eight:
 
@@ -101,7 +100,7 @@ Under planning..., may be abandoned.
 
 # ViewModel :four:
 
-> The [`ViewModel`](https://developer.android.com/reference/androidx/lifecycle/ViewModel.html) class is designed to store and manage UI-related data in a lifecycle conscious way. The [`ViewModel`](https://developer.android.com/reference/androidx/lifecycle/ViewModel.html) class allows data to survive configuration changes such as screen rotations. 
+> The [`ViewModel`][ViewModel] class is designed to store and manage UI-related data in a lifecycle conscious way. The [`ViewModel`][ViewModel] class allows data to survive configuration changes such as screen rotations. 
 
 ViewModel can store some `LiveData`, so activities and fragments can observe the data change and do UI or other operations, just like the Observe Pattern.
 
@@ -140,7 +139,10 @@ graph TD;
 
 Just like mybatis with Spring, Room help me reduce code to CRUD.
 	
+
 ## Remote Data Source :zero:
 
 I will develop it in Spring.
+
+[ViewModel]: https://developer.android.com/reference/androidx/lifecycle/ViewModel.html
 

@@ -1,2259 +1,696 @@
 <!doctype html>
-<html style='font-size:16px !important'>
+<html>
 <head>
-    <meta charset='UTF-8'>
-    <meta content='width=device-width initial-scale=1' name='viewport'>
-    <title>readme</title>
-    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
-          rel='stylesheet' type='text/css'/>
-    <style type='text/css'>html {
-        overflow-x: initial !important;
-    }
-
-    :root {
-        --node-fill: #ECECFF;
-        --node-border: #CCCCFF;
-        --note-fill: #fff5ad;
-        --note-border: #aaaa33;
-        --cluster-fill: #ffffde !important;
-        --cluster-border: #aaaa33 !important;
-    }
-
-    .mermaid .label {
-        color: var(--text-color);
-    }
-
-    .node rect, .node circle, .node ellipse, .node polygon {
-        fill: var(--node-fill);
-        stroke: var(--node-border);
-        stroke-width: 1px;
-    }
-
-    .edgePath .path {
-        stroke: var(--text-color);
-    }
-
-    .edgeLabel {
-        background-color: var(--bg-color);
-    }
-
-    .cluster rect {
-        fill: rgb(255, 255, 222) !important;
-        rx: 4 !important;
-        stroke: rgb(170, 170, 51) !important;
-        stroke-width: 1px !important;
-    }
-
-    .cluster text {
-        fill: var(--text-color);
-    }
-
-    .actor {
-        stroke: var(--node-border);
-        fill: var(--node-fill);
-    }
-
-    text.actor {
-        fill: var(--text-color);
-        stroke: none;
-    }
-
-    .actor-line {
-        stroke: grey;
-    }
-
-    .messageLine0 {
-        stroke-width: 1.5;
-        stroke: var(--text-color);
-    }
-
-    .messageLine1 {
-        stroke-width: 1.5;
-        stroke: var(--text-color);
-    }
-
-    #arrowhead {
-        fill: var(--text-color);
-    }
-
-    #crosshead path {
-        fill: var(--text-color) !important;
-        stroke: var(--text-color) !important;
-    }
-
-    .messageText {
-        fill: var(--text-color);
-        stroke: none;
-    }
-
-    .labelBox {
-        stroke: var(--node-border);
-        fill: var(--node-fill);
-    }
-
-    .labelText {
-        fill: var(--text-color);
-        stroke: none;
-    }
-
-    .loopText {
-        fill: var(--text-color);
-        stroke: none;
-    }
-
-    .loopLine {
-        stroke-width: 2;
-        stroke: var(--node-border);
-    }
-
-    .note {
-        stroke: var(--note-border);
-        fill: var(--note-fill);
-    }
-
-    .noteText {
-        fill: var(--text-color);
-        stroke: none;
-        font-size: 14px;
-    }
-
-    .section {
-        stroke: none;
-        opacity: 0.2;
-    }
-
-    .section0 {
-        fill: rgba(102, 102, 255, 0.49);
-    }
-
-    .section2 {
-        fill: rgb(255, 244, 0);
-    }
-
-    .section1, .section3 {
-        fill: white;
-        opacity: 0.2;
-    }
-
-    .sectionTitle0 {
-        fill: var(--text-color);
-    }
-
-    .sectionTitle1 {
-        fill: var(--text-color);
-    }
-
-    .sectionTitle2 {
-        fill: var(--text-color);
-    }
-
-    .sectionTitle3 {
-        fill: var(--text-color);
-    }
-
-    .sectionTitle {
-        text-anchor: start;
-        font-size: 11px;
-    }
-
-    .grid .tick {
-        stroke: lightgrey;
-        opacity: 0.3;
-        shape-rendering: crispedges;
-    }
-
-    .grid path {
-        stroke-width: 0;
-    }
-
-    .today {
-        fill: none;
-        stroke: red;
-        stroke-width: 2px;
-    }
-
-    .task {
-        stroke-width: 2;
-    }
-
-    .taskText {
-        text-anchor: middle;
-        font-size: 11px;
-    }
-
-    .taskTextOutsideRight {
-        fill: black;
-        text-anchor: start;
-        font-size: 11px;
-    }
-
-    .taskTextOutsideLeft {
-        fill: black;
-        text-anchor: end;
-        font-size: 11px;
-    }
-
-    .taskText0, .taskText1, .taskText2, .taskText3 {
-        fill: white;
-    }
-
-    .task0, .task1, .task2, .task3 {
-        fill: rgb(138, 144, 221);
-        stroke: rgb(83, 79, 188);
-    }
-
-    .taskTextOutside0, .taskTextOutside2 {
-        fill: var(--text-color);
-    }
-
-    .taskTextOutside1, .taskTextOutside3 {
-        fill: var(--text-color);
-    }
-
-    .active0, .active1, .active2, .active3 {
-        fill: rgb(191, 199, 255);
-        stroke: rgb(83, 79, 188);
-    }
-
-    .activeText0, .activeText1, .activeText2, .activeText3 {
-        fill: black !important;
-    }
-
-    .done0, .done1, .done2, .done3 {
-        stroke: grey;
-        fill: lightgrey;
-        stroke-width: 2;
-    }
-
-    .doneText0, .doneText1, .doneText2, .doneText3 {
-        fill: black !important;
-    }
-
-    .crit0, .crit1, .crit2, .crit3 {
-        stroke: rgb(255, 136, 136);
-        fill: red;
-        stroke-width: 2;
-    }
-
-    .activeCrit0, .activeCrit1, .activeCrit2, .activeCrit3 {
-        stroke: rgb(255, 136, 136);
-        fill: rgb(191, 199, 255);
-        stroke-width: 2;
-    }
-
-    .doneCrit0, .doneCrit1, .doneCrit2, .doneCrit3 {
-        stroke: rgb(255, 136, 136);
-        fill: lightgrey;
-        stroke-width: 2;
-        cursor: pointer;
-        shape-rendering: crispedges;
-    }
-
-    .doneCritText0, .doneCritText1, .doneCritText2, .doneCritText3 {
-        fill: black !important;
-    }
-
-    .activeCritText0, .activeCritText1, .activeCritText2, .activeCritText3 {
-        fill: black !important;
-    }
-
-    .titleText {
-        text-anchor: middle;
-        font-size: 18px;
-        fill: black;
-    }
-
-    .node text {
-        font-size: 14px;
-    }
-
-    div.mermaidTooltip {
-        position: absolute;
-        text-align: center;
-        max-width: 200px;
-        padding: 2px;
-        font-size: 12px;
-        background: rgb(255, 255, 222);
-        border: 1px solid rgb(170, 170, 51);
-        border-radius: 2px;
-        pointer-events: none;
-        z-index: 100;
-    }
-
-    #write .md-diagram-panel .md-diagram-panel-preview div {
-        width: initial;
-    }
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>readme</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --node-fill: #ECECFF; --node-border: #CCCCFF; --cluster-fill: #ffffde; --cluster-border: #aaaa33; --note-fill: #fff5ad; --note-border: #aaaa33; --mermaid-color: var(--text-color); }
+.label { font-family: var(--mermaid-font-family); color: rgb(51, 51, 51); }
+.label text { fill: rgb(51, 51, 51); }
+.node rect, .node circle, .node ellipse, .node polygon { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1px; }
+.node .label { text-align: center; }
+.node.clickable { cursor: pointer; }
+.arrowheadPath { fill: var(--text-color); }
+.edgePath .path { stroke: var(--text-color); stroke-width: 1.5px; }
+.edgeLabel { background-color: rgb(232, 232, 232); text-align: center; }
+.cluster rect { fill: var(--cluster-fill); stroke: var(--cluster-border); stroke-width: 1px; }
+.cluster text { fill: var(--text-color); }
+div.mermaidTooltip { position: absolute; text-align: center; max-width: 200px; padding: 2px; font-family: var(--mermaid-font-family); font-size: 12px; background: var(--cluster-fill); border: 1px solid var(--cluster-border); border-radius: 2px; pointer-events: none; z-index: 100; }
+.actor { stroke: var(--node-border); fill: var(--node-fill); }
+text.actor { fill: black; stroke: none; }
+.actor-line { stroke: grey; }
+.messageLine0 { stroke-width: 1.5; stroke: var(--text-color); }
+.messageLine1 { stroke-width: 1.5; stroke: var(--text-color); }
+#arrowhead { fill: var(--text-color); }
+.sequenceNumber { fill: white; }
+#sequencenumber { fill: var(--text-color); }
+#crosshead path { fill: var(--text-color)  !important; stroke: var(--text-color)  !important; }
+.messageText { fill: var(--text-color); stroke: none; }
+.labelBox { stroke: var(--node-border); fill: var(--node-fill); }
+.labelText { fill: black; stroke: none; }
+.loopText { fill: black; stroke: none; }
+.loopLine { stroke-width: 2; stroke: var(--node-border); }
+.note { stroke: var(--cluster-border); fill: rgb(255, 245, 173); }
+.noteText { fill: black; stroke: none; font-family: var(--mermaid-font-family); font-size: 14px; }
+.activation0 { fill: rgb(244, 244, 244); stroke: rgb(102, 102, 102); }
+.activation1 { fill: rgb(244, 244, 244); stroke: rgb(102, 102, 102); }
+.activation2 { fill: rgb(244, 244, 244); stroke: rgb(102, 102, 102); }
+.mermaid-main-font { font-family: var(--mermaid-font-family); }
+.section { stroke: none; opacity: 0.2; }
+.section0 { fill: rgba(102, 102, 255, 0.49); }
+.section2 { fill: rgb(255, 244, 0); }
+.section1, .section3 { fill: white; opacity: 0.2; }
+.sectionTitle0 { fill: var(--text-color); }
+.sectionTitle1 { fill: var(--text-color); }
+.sectionTitle2 { fill: var(--text-color); }
+.sectionTitle3 { fill: var(--text-color); }
+.sectionTitle { text-anchor: start; font-size: 11px; font-family: var(--mermaid-font-family); }
+.grid .tick { stroke: lightgrey; opacity: 0.3; shape-rendering: crispedges; }
+.grid .tick text { font-family: var(--mermaid-font-family); }
+.grid path { stroke-width: 0; }
+.today { fill: none; stroke: red; stroke-width: 2px; }
+.task { stroke-width: 2; }
+.taskText { text-anchor: middle; font-family: var(--mermaid-font-family); }
+.taskText:not([font-size]) { font-size: 11px; }
+.taskTextOutsideRight { fill: black; text-anchor: start; font-size: 11px; font-family: var(--mermaid-font-family); }
+.taskTextOutsideLeft { fill: black; text-anchor: end; font-size: 11px; }
+.task.clickable { cursor: pointer; }
+.taskText.clickable { cursor: pointer; font-weight: bold; fill: rgb(0, 49, 99) !important; }
+.taskTextOutsideLeft.clickable { cursor: pointer; font-weight: bold; fill: rgb(0, 49, 99) !important; }
+.taskTextOutsideRight.clickable { cursor: pointer; font-weight: bold; fill: rgb(0, 49, 99) !important; }
+.taskText0, .taskText1, .taskText2, .taskText3 { fill: white; }
+.task0, .task1, .task2, .task3 { fill: rgb(138, 144, 221); stroke: rgb(83, 79, 188); }
+.taskTextOutside0, .taskTextOutside2 { fill: black; }
+.taskTextOutside1, .taskTextOutside3 { fill: black; }
+.active0, .active1, .active2, .active3 { fill: rgb(191, 199, 255); stroke: rgb(83, 79, 188); }
+.activeText0, .activeText1, .activeText2, .activeText3 { fill: black !important; }
+.done0, .done1, .done2, .done3 { stroke: grey; fill: lightgrey; stroke-width: 2; }
+.doneText0, .doneText1, .doneText2, .doneText3 { fill: black !important; }
+.crit0, .crit1, .crit2, .crit3 { stroke: rgb(255, 136, 136); fill: red; stroke-width: 2; }
+.activeCrit0, .activeCrit1, .activeCrit2, .activeCrit3 { stroke: rgb(255, 136, 136); fill: rgb(191, 199, 255); stroke-width: 2; }
+.doneCrit0, .doneCrit1, .doneCrit2, .doneCrit3 { stroke: rgb(255, 136, 136); fill: lightgrey; stroke-width: 2; cursor: pointer; shape-rendering: crispedges; }
+.milestone { transform: rotate(45deg) scale(0.8, 0.8); }
+.milestoneText { font-style: italic; }
+.doneCritText0, .doneCritText1, .doneCritText2, .doneCritText3 { fill: black !important; }
+.activeCritText0, .activeCritText1, .activeCritText2, .activeCritText3 { fill: black !important; }
+.titleText { text-anchor: middle; font-size: 18px; fill: black; font-family: var(--mermaid-font-family); }
+g.classGroup text { fill: rgb(147, 112, 219); stroke: none; font-family: var(--mermaid-font-family); font-size: 10px; }
+g.classGroup text .title { font-weight: bolder; }
+g.classGroup rect { fill: var(--node-fill); stroke: rgb(147, 112, 219); }
+g.classGroup line { stroke: rgb(147, 112, 219); stroke-width: 1; }
+.classLabel .box { stroke: none; stroke-width: 0; fill: var(--node-fill); opacity: 0.5; }
+.classLabel .label { fill: rgb(147, 112, 219); font-size: 10px; }
+.relation { stroke: rgb(147, 112, 219); stroke-width: 1; fill: none; }
+#compositionStart { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#compositionEnd { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#aggregationStart { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#aggregationEnd { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#dependencyStart { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#dependencyEnd { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#extensionStart { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#extensionEnd { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+.commit-id, .commit-msg, .branch-label { fill: lightgrey; color: lightgrey; font-family: var(--mermaid-font-family); }
+.pieTitleText { text-anchor: middle; font-size: 25px; fill: black; font-family: var(--mermaid-font-family); }
+.slice { font-family: var(--mermaid-font-family); }
+g.stateGroup text { fill: rgb(147, 112, 219); stroke: none; font-size: 10px; font-family: var(--mermaid-font-family); }
+g.stateGroup text { fill: rgb(147, 112, 219); stroke: none; font-size: 10px; }
+g.stateGroup .state-title { font-weight: bolder; fill: black; }
+g.stateGroup rect { fill: var(--node-fill); stroke: rgb(147, 112, 219); }
+g.stateGroup line { stroke: rgb(147, 112, 219); stroke-width: 1; }
+.transition { stroke: rgb(147, 112, 219); stroke-width: 1; fill: none; }
+.stateGroup .composit { fill: white; border-bottom: 1px; }
+.state-note { stroke: var(--cluster-border); fill: rgb(255, 245, 173); }
+.state-note text { fill: black; stroke: none; font-size: 10px; }
+.stateLabel .box { stroke: none; stroke-width: 0; fill: var(--node-fill); opacity: 0.5; }
+.stateLabel text { fill: black; font-size: 10px; font-weight: bold; font-family: var(--mermaid-font-family); }
+.node text { font-size: 14px; }
+div.mermaidTooltip { position: absolute; text-align: center; max-width: 200px; padding: 2px; font-family: var(--mermaid-font-family); font-size: 12px; background: var(--cluster-fill); border: 1px solid var(--cluster-border); border-radius: 2px; pointer-events: none; z-index: 100; }
+#write .md-diagram-panel .md-diagram-panel-preview div { width: initial; }
 
 
-    :root {
-        --bg-color: #ffffff;
-        --text-color: #333333;
-        --select-text-bg-color: #B5D6FC;
-        --select-text-font-color: auto;
-        --monospace: "Lucida Console", Consolas, "Courier", monospace;
-    }
+:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
 
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
     html {
-        font-size: 14px;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-        margin: 0px;
-        padding: 0px;
-        height: auto;
-        bottom: 0px;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        font-size: 1rem;
-        line-height: 1.42857;
-        overflow-x: hidden;
-        background: inherit;
-        tab-size: 4;
-    }
-
-    iframe {
-        margin: auto;
-    }
-
-    a.url {
-        word-break: break-all;
-    }
-
-    a:active, a:hover {
-        outline: 0px;
-    }
-
-    .in-text-selection, ::selection {
-        text-shadow: none;
-        background: var(--select-text-bg-color);
-        color: var(--select-text-font-color);
-    }
-
-    #write {
-        margin: 0px auto;
-        height: auto;
-        width: inherit;
-        word-break: normal;
-        overflow-wrap: break-word;
-        position: relative;
-        white-space: normal;
-        overflow-x: visible;
-        padding-top: 40px;
-    }
-
-    #write.first-line-indent p {
-        text-indent: 2em;
-    }
-
-    #write.first-line-indent li p, #write.first-line-indent p * {
-        text-indent: 0px;
-    }
-
-    #write.first-line-indent li {
-        margin-left: 2em;
-    }
-
-    .for-image #write {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    body.typora-export {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    .typora-export .footnote-line, .typora-export li, .typora-export p {
-        white-space: pre-wrap;
-    }
-
-    @media screen and (max-width: 500px) {
-        body.typora-export {
-            padding-left: 0px;
-            padding-right: 0px;
-        }
-
-        #write {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .CodeMirror-sizer {
-            margin-left: 0px !important;
-        }
-
-        .CodeMirror-gutters {
-            display: none !important;
-        }
-    }
-
-    #write li > figure:last-child {
-        margin-bottom: 0.5rem;
-    }
-
-    #write ol, #write ul {
-        position: relative;
-    }
-
-    img {
-        max-width: 100%;
-        vertical-align: middle;
-    }
-
-    button, input, select, textarea {
-        color: inherit;
-        font: inherit;
-    }
-
-    input[type="checkbox"], input[type="radio"] {
-        line-height: normal;
-        padding: 0px;
-    }
-
-    *, ::after, ::before {
-        box-sizing: border-box;
-    }
-
-    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
-        width: inherit;
-    }
-
-    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
-        position: relative;
-    }
-
-    p {
-        line-height: inherit;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        break-after: avoid-page;
-        break-inside: avoid;
-        orphans: 2;
-    }
-
-    p {
-        orphans: 4;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
-    h3 {
-        font-size: 1.6rem;
-    }
-
-    h4 {
-        font-size: 1.4rem;
-    }
-
-    h5 {
-        font-size: 1.2rem;
-    }
-
-    h6 {
-        font-size: 1rem;
-    }
-
-    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    .md-blockmeta {
-        color: rgb(204, 204, 204);
-        font-weight: 700;
-        font-style: italic;
-    }
-
-    a {
-        cursor: pointer;
-    }
-
-    sup.md-footnote {
-        padding: 2px 4px;
-        background-color: rgba(238, 238, 238, 0.7);
-        color: rgb(85, 85, 85);
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    sup.md-footnote a, sup.md-footnote a:hover {
-        color: inherit;
-        text-transform: inherit;
-        text-decoration: inherit;
-    }
-
-    #write input[type="checkbox"] {
-        cursor: pointer;
-        width: inherit;
-        height: inherit;
-    }
-
-    figure {
-        overflow-x: auto;
-        margin: 1.2em 0px;
-        max-width: calc(100% + 16px);
-        padding: 0px;
-    }
-
-    figure > table {
-        margin: 0px !important;
-    }
-
-    tr {
-        break-inside: avoid;
-        break-after: auto;
-    }
-
-    thead {
-        display: table-header-group;
-    }
-
-    table {
-        border-collapse: collapse;
-        border-spacing: 0px;
-        width: 100%;
-        overflow: auto;
-        break-inside: auto;
-        text-align: left;
-    }
-
-    table.md-table td {
-        min-width: 32px;
-    }
-
-    .CodeMirror-gutters {
-        border-right: 0px;
-        background-color: inherit;
-    }
-
-    .CodeMirror-linenumber {
-        user-select: none;
-    }
-
-    .CodeMirror {
-        text-align: left;
-    }
-
-    .CodeMirror-placeholder {
-        opacity: 0.3;
-    }
-
-    .CodeMirror pre {
-        padding: 0px 4px;
-    }
-
-    .CodeMirror-lines {
-        padding: 0px;
-    }
-
-    div.hr:focus {
-        cursor: none;
-    }
-
-    #write pre {
-        white-space: pre-wrap;
-    }
-
-    #write.fences-no-line-wrapping pre {
-        white-space: pre;
-    }
-
-    #write pre.ty-contain-cm {
-        white-space: normal;
-    }
-
-    .CodeMirror-gutters {
-        margin-right: 4px;
-    }
-
-    .md-fences {
-        font-size: 0.9rem;
-        display: block;
-        break-inside: avoid;
-        text-align: left;
-        overflow: visible;
-        white-space: pre;
-        background: inherit;
-        position: relative !important;
-    }
-
-    .md-diagram-panel {
-        width: 100%;
-        margin-top: 10px;
-        text-align: center;
-        padding-top: 0px;
-        padding-bottom: 8px;
-        overflow-x: auto;
-    }
-
-    #write .md-fences.mock-cm {
-        white-space: pre-wrap;
-    }
-
-    .md-fences.md-fences-with-lineno {
-        padding-left: 0px;
-    }
-
-    #write.fences-no-line-wrapping .md-fences.mock-cm {
-        white-space: pre;
-        overflow-x: auto;
-    }
-
-    .md-fences.mock-cm.md-fences-with-lineno {
-        padding-left: 8px;
-    }
-
-    .CodeMirror-line, twitterwidget {
-        break-inside: avoid;
-    }
-
-    .footnotes {
-        opacity: 0.8;
-        font-size: 0.9rem;
-        margin-top: 1em;
-        margin-bottom: 1em;
-    }
-
-    .footnotes + .footnotes {
-        margin-top: 0px;
-    }
-
-    .md-reset {
-        margin: 0px;
-        padding: 0px;
-        border: 0px;
-        outline: 0px;
-        vertical-align: top;
-        background: 0px 0px;
-        text-decoration: none;
-        text-shadow: none;
-        float: none;
-        position: static;
-        width: auto;
-        height: auto;
-        white-space: nowrap;
-        cursor: inherit;
-        -webkit-tap-highlight-color: transparent;
-        line-height: normal;
-        font-weight: 400;
-        text-align: left;
-        box-sizing: content-box;
-        direction: ltr;
-    }
-
-    li div {
-        padding-top: 0px;
-    }
-
-    blockquote {
-        margin: 1rem 0px;
-    }
-
-    li .mathjax-block, li p {
-        margin: 0.5rem 0px;
-    }
-
-    li {
-        margin: 0px;
-        position: relative;
-    }
-
-    blockquote > :last-child {
-        margin-bottom: 0px;
-    }
-
-    blockquote > :first-child, li > :first-child {
-        margin-top: 0px;
-    }
-
-    .footnotes-area {
-        color: rgb(136, 136, 136);
-        margin-top: 0.714rem;
-        padding-bottom: 0.143rem;
-        white-space: normal;
-    }
-
-    #write .footnote-line {
-        white-space: pre-wrap;
-    }
-
-    @media print {
-        body, html {
-            border: 1px solid transparent;
-            height: 99%;
-            break-after: avoid;
-            break-before: avoid;
-        }
-
-        #write {
-            margin-top: 0px;
-            padding-top: 0px;
-            border-color: transparent !important;
-        }
-
-        .typora-export * {
-            -webkit-print-color-adjust: exact;
-        }
-
-        html.blink-to-pdf {
-            font-size: 13px;
-        }
-
-        .typora-export #write {
-            padding-left: 32px;
-            padding-right: 32px;
-            padding-bottom: 0px;
-            break-after: avoid;
-        }
-
-        .typora-export #write::after {
-            height: 0px;
-        }
-    }
-
-    .footnote-line {
-        margin-top: 0.714em;
-        font-size: 0.7em;
-    }
-
-    a img, img a {
-        cursor: pointer;
-    }
-
-    pre.md-meta-block {
-        font-size: 0.8rem;
-        min-height: 0.8rem;
-        white-space: pre-wrap;
-        background: rgb(204, 204, 204);
-        display: block;
-        overflow-x: hidden;
-    }
-
-    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
-        display: block;
-        margin: auto;
-    }
-
-    p > .md-image:only-child {
-        display: inline-block;
-        width: 100%;
-    }
-
-    #write .MathJax_Display {
-        margin: 0.8em 0px 0px;
-    }
-
-    .md-math-block {
-        width: 100%;
-    }
-
-    .md-math-block:not(:empty)::after {
-        display: none;
-    }
-
-    [contenteditable="true"]:active, [contenteditable="true"]:focus {
-        outline: 0px;
-        box-shadow: none;
-    }
-
-    .md-task-list-item {
-        position: relative;
-        list-style-type: none;
-    }
-
-    .task-list-item.md-task-list-item {
-        padding-left: 0px;
-    }
-
-    .md-task-list-item > input {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        margin-left: -1.2em;
-        margin-top: calc(1em - 10px);
-        border: none;
-    }
-
-    .math {
-        font-size: 1rem;
-    }
-
-    .md-toc {
-        min-height: 3.58rem;
-        position: relative;
-        font-size: 0.9rem;
-        border-radius: 10px;
-    }
-
-    .md-toc-content {
-        position: relative;
-        margin-left: 0px;
-    }
-
-    .md-toc-content::after, .md-toc::after {
-        display: none;
-    }
-
-    .md-toc-item {
-        display: block;
-        color: rgb(65, 131, 196);
-    }
-
-    .md-toc-item a {
-        text-decoration: none;
-    }
-
-    .md-toc-inner:hover {
-        text-decoration: underline;
-    }
-
-    .md-toc-inner {
-        display: inline-block;
-        cursor: pointer;
-    }
-
-    .md-toc-h1 .md-toc-inner {
-        margin-left: 0px;
-        font-weight: 700;
-    }
-
-    .md-toc-h2 .md-toc-inner {
-        margin-left: 2em;
-    }
-
-    .md-toc-h3 .md-toc-inner {
-        margin-left: 4em;
-    }
-
-    .md-toc-h4 .md-toc-inner {
-        margin-left: 6em;
-    }
-
-    .md-toc-h5 .md-toc-inner {
-        margin-left: 8em;
-    }
-
-    .md-toc-h6 .md-toc-inner {
-        margin-left: 10em;
-    }
-
-    @media screen and (max-width: 48em) {
-        .md-toc-h3 .md-toc-inner {
-            margin-left: 3.5em;
-        }
-
-        .md-toc-h4 .md-toc-inner {
-            margin-left: 5em;
-        }
-
-        .md-toc-h5 .md-toc-inner {
-            margin-left: 6.5em;
-        }
-
-        .md-toc-h6 .md-toc-inner {
-            margin-left: 8em;
-        }
-    }
-
-    a.md-toc-inner {
-        font-size: inherit;
-        font-style: inherit;
-        font-weight: inherit;
-        line-height: inherit;
-    }
-
-    .footnote-line a:not(.reversefootnote) {
-        color: inherit;
-    }
-
-    .md-attr {
-        display: none;
-    }
-
-    .md-fn-count::after {
-        content: ".";
-    }
-
-    code, pre, samp, tt {
-        font-family: var(--monospace);
-    }
-
-    kbd {
-        margin: 0px 0.1em;
-        padding: 0.1em 0.6em;
-        font-size: 0.8em;
-        color: rgb(36, 39, 41);
-        background: rgb(255, 255, 255);
-        border: 1px solid rgb(173, 179, 185);
-        border-radius: 3px;
-        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
-        white-space: nowrap;
-        vertical-align: middle;
-    }
-
-    .md-comment {
-        color: rgb(162, 127, 3);
-        opacity: 0.8;
-        font-family: var(--monospace);
-    }
-
-    code {
-        text-align: left;
-        vertical-align: initial;
-    }
-
-    a.md-print-anchor {
-        white-space: pre !important;
-        border-width: initial !important;
-        border-style: none !important;
-        border-color: initial !important;
-        display: inline-block !important;
-        position: absolute !important;
-        width: 1px !important;
-        right: 0px !important;
-        outline: 0px !important;
-        background: 0px 0px !important;
-        text-decoration: initial !important;
-        text-shadow: initial !important;
-    }
-
-    .md-inline-math .MathJax_SVG .noError {
-        display: none !important;
-    }
-
-    .html-for-mac .inline-math-svg .MathJax_SVG {
-        vertical-align: 0.2px;
-    }
-
-    .md-math-block .MathJax_SVG_Display {
-        text-align: center;
-        margin: 0px;
-        position: relative;
-        text-indent: 0px;
-        max-width: none;
-        max-height: none;
-        min-height: 0px;
-        min-width: 100%;
-        width: auto;
-        overflow-y: hidden;
-        display: block !important;
-    }
-
-    .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
-        width: auto;
-        margin: inherit;
-        display: inline-block !important;
-    }
-
-    .MathJax_SVG .MJX-monospace {
-        font-family: var(--monospace);
-    }
-
-    .MathJax_SVG .MJX-sans-serif {
-        font-family: sans-serif;
-    }
-
-    .MathJax_SVG {
-        display: inline;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        zoom: 90%;
-        text-indent: 0px;
-        text-align: left;
-        text-transform: none;
-        letter-spacing: normal;
-        word-spacing: normal;
-        overflow-wrap: normal;
-        white-space: nowrap;
-        float: none;
-        direction: ltr;
-        max-width: none;
-        max-height: none;
-        min-width: 0px;
-        min-height: 0px;
-        border: 0px;
-        padding: 0px;
-        margin: 0px;
-    }
-
-    .MathJax_SVG * {
-        transition: none 0s ease 0s;
-    }
-
-    .MathJax_SVG_Display svg {
-        vertical-align: middle !important;
-        margin-bottom: 0px !important;
-        margin-top: 0px !important;
-    }
-
-    .os-windows.monocolor-emoji .md-emoji {
-        font-family: "Segoe UI Symbol", sans-serif;
-    }
-
-    .md-diagram-panel > svg {
-        max-width: 100%;
-    }
-
-    [lang="mermaid"] svg, [lang="flow"] svg {
-        max-width: 100%;
-        height: auto;
-    }
-
-    [lang="mermaid"] .node text {
-        font-size: 1rem;
-    }
-
-    table tr th {
-        border-bottom: 0px;
-    }
-
-    video {
-        max-width: 100%;
-        display: block;
-        margin: 0px auto;
-    }
-
-    iframe {
-        max-width: 100%;
-        width: 100%;
-        border: none;
-    }
-
-    .highlight td, .highlight tr {
-        border: 0px;
-    }
-
-
-    .CodeMirror {
-        height: auto;
-    }
-
-    .CodeMirror.cm-s-inner {
-        background: inherit;
-    }
-
-    .CodeMirror-scroll {
-        overflow: auto hidden;
-        z-index: 3;
-    }
-
-    .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
-        background-color: rgb(255, 255, 255);
-    }
-
-    .CodeMirror-gutters {
-        border-right: 1px solid rgb(221, 221, 221);
-        background: inherit;
-        white-space: nowrap;
-    }
-
-    .CodeMirror-linenumber {
-        padding: 0px 3px 0px 5px;
-        text-align: right;
-        color: rgb(153, 153, 153);
-    }
-
-    .cm-s-inner .cm-keyword {
-        color: rgb(119, 0, 136);
-    }
-
-    .cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
-        color: rgb(34, 17, 153);
-    }
-
-    .cm-s-inner .cm-number {
-        color: rgb(17, 102, 68);
-    }
-
-    .cm-s-inner .cm-def {
-        color: rgb(0, 0, 255);
-    }
-
-    .cm-s-inner .cm-variable {
-        color: rgb(0, 0, 0);
-    }
-
-    .cm-s-inner .cm-variable-2 {
-        color: rgb(0, 85, 170);
-    }
-
-    .cm-s-inner .cm-variable-3 {
-        color: rgb(0, 136, 85);
-    }
-
-    .cm-s-inner .cm-string {
-        color: rgb(170, 17, 17);
-    }
-
-    .cm-s-inner .cm-property {
-        color: rgb(0, 0, 0);
-    }
-
-    .cm-s-inner .cm-operator {
-        color: rgb(152, 26, 26);
-    }
-
-    .cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
-        color: rgb(170, 85, 0);
-    }
-
-    .cm-s-inner .cm-string-2 {
-        color: rgb(255, 85, 0);
-    }
-
-    .cm-s-inner .cm-meta {
-        color: rgb(85, 85, 85);
-    }
-
-    .cm-s-inner .cm-qualifier {
-        color: rgb(85, 85, 85);
-    }
-
-    .cm-s-inner .cm-builtin {
-        color: rgb(51, 0, 170);
-    }
-
-    .cm-s-inner .cm-bracket {
-        color: rgb(153, 153, 119);
-    }
-
-    .cm-s-inner .cm-tag {
-        color: rgb(17, 119, 0);
-    }
-
-    .cm-s-inner .cm-attribute {
-        color: rgb(0, 0, 204);
-    }
-
-    .cm-s-inner .cm-header, .cm-s-inner.cm-header {
-        color: rgb(0, 0, 255);
-    }
-
-    .cm-s-inner .cm-quote, .cm-s-inner.cm-quote {
-        color: rgb(0, 153, 0);
-    }
-
-    .cm-s-inner .cm-hr, .cm-s-inner.cm-hr {
-        color: rgb(153, 153, 153);
-    }
-
-    .cm-s-inner .cm-link, .cm-s-inner.cm-link {
-        color: rgb(0, 0, 204);
-    }
-
-    .cm-negative {
-        color: rgb(221, 68, 68);
-    }
-
-    .cm-positive {
-        color: rgb(34, 153, 34);
-    }
-
-    .cm-header, .cm-strong {
-        font-weight: 700;
-    }
-
-    .cm-del {
-        text-decoration: line-through;
-    }
-
-    .cm-em {
-        font-style: italic;
-    }
-
-    .cm-link {
-        text-decoration: underline;
-    }
-
-    .cm-error {
-        color: red;
-    }
-
-    .cm-invalidchar {
-        color: red;
-    }
-
-    .cm-constant {
-        color: rgb(38, 139, 210);
-    }
-
-    .cm-defined {
-        color: rgb(181, 137, 0);
-    }
-
-    div.CodeMirror span.CodeMirror-matchingbracket {
-        color: rgb(0, 255, 0);
-    }
-
-    div.CodeMirror span.CodeMirror-nonmatchingbracket {
-        color: rgb(255, 34, 34);
-    }
-
-    .cm-s-inner .CodeMirror-activeline-background {
-        background: inherit;
-    }
-
-    .CodeMirror {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .CodeMirror-scroll {
-        height: 100%;
-        outline: 0px;
-        position: relative;
-        box-sizing: content-box;
-        background: inherit;
-    }
-
-    .CodeMirror-sizer {
-        position: relative;
-    }
-
-    .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
-        position: absolute;
-        z-index: 6;
-        display: none;
-    }
-
-    .CodeMirror-vscrollbar {
-        right: 0px;
-        top: 0px;
-        overflow: hidden;
-    }
-
-    .CodeMirror-hscrollbar {
-        bottom: 0px;
-        left: 0px;
-        overflow: hidden;
-    }
-
-    .CodeMirror-scrollbar-filler {
-        right: 0px;
-        bottom: 0px;
-    }
-
-    .CodeMirror-gutter-filler {
-        left: 0px;
-        bottom: 0px;
-    }
-
-    .CodeMirror-gutters {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        padding-bottom: 30px;
-        z-index: 3;
-    }
-
-    .CodeMirror-gutter {
-        white-space: normal;
-        height: 100%;
-        box-sizing: content-box;
-        padding-bottom: 30px;
-        margin-bottom: -32px;
-        display: inline-block;
-    }
-
-    .CodeMirror-gutter-wrapper {
-        position: absolute;
-        z-index: 4;
-        background: 0px 0px !important;
-        border: none !important;
-    }
-
-    .CodeMirror-gutter-background {
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        z-index: 4;
-    }
-
-    .CodeMirror-gutter-elt {
-        position: absolute;
-        cursor: default;
-        z-index: 4;
-    }
-
-    .CodeMirror-lines {
-        cursor: text;
-    }
-
-    .CodeMirror pre {
-        border-radius: 0px;
-        border-width: 0px;
-        background: 0px 0px;
-        font-family: inherit;
-        font-size: inherit;
-        margin: 0px;
-        white-space: pre;
-        overflow-wrap: normal;
-        color: inherit;
-        z-index: 2;
-        position: relative;
-        overflow: visible;
-    }
-
-    .CodeMirror-wrap pre {
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-        word-break: normal;
-    }
-
-    .CodeMirror-code pre {
-        border-right: 30px solid transparent;
-        width: fit-content;
-    }
-
-    .CodeMirror-wrap .CodeMirror-code pre {
-        border-right: none;
-        width: auto;
-    }
-
-    .CodeMirror-linebackground {
-        position: absolute;
-        left: 0px;
-        right: 0px;
-        top: 0px;
-        bottom: 0px;
-        z-index: 0;
-    }
-
-    .CodeMirror-linewidget {
-        position: relative;
-        z-index: 2;
-        overflow: auto;
-    }
-
-    .CodeMirror-wrap .CodeMirror-scroll {
-        overflow-x: hidden;
-    }
-
-    .CodeMirror-measure {
-        position: absolute;
-        width: 100%;
-        height: 0px;
-        overflow: hidden;
-        visibility: hidden;
-    }
-
-    .CodeMirror-measure pre {
-        position: static;
-    }
-
-    .CodeMirror div.CodeMirror-cursor {
-        position: absolute;
-        visibility: hidden;
-        border-right: none;
-        width: 0px;
-    }
-
-    .CodeMirror div.CodeMirror-cursor {
-        visibility: hidden;
-    }
-
-    .CodeMirror-focused div.CodeMirror-cursor {
-        visibility: inherit;
-    }
-
-    .cm-searching {
-        background: rgba(255, 255, 0, 0.4);
-    }
-
-    @media print {
-        .CodeMirror div.CodeMirror-cursor {
-            visibility: hidden;
-        }
-    }
-
-
-    :root {
-        --side-bar-bg-color: #fafafa;
-        --control-text-color: #777;
-    }
-
-    html {
-        font-size: 16px;
-    }
-
-    body {
-        font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: rgb(51, 51, 51);
-        line-height: 1.6;
-    }
-
-    #write {
-        max-width: 860px;
-        margin: 0px auto;
-        padding: 30px 30px 100px;
-    }
-
-    #write > ul:first-child, #write > ol:first-child {
-        margin-top: 30px;
-    }
-
-    a {
-        color: rgb(65, 131, 196);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        position: relative;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        font-weight: bold;
-        line-height: 1.4;
-        cursor: text;
-    }
-
-    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-        text-decoration: none;
-    }
-
-    h1 tt, h1 code {
-        font-size: inherit;
-    }
-
-    h2 tt, h2 code {
-        font-size: inherit;
-    }
-
-    h3 tt, h3 code {
-        font-size: inherit;
-    }
-
-    h4 tt, h4 code {
-        font-size: inherit;
-    }
-
-    h5 tt, h5 code {
-        font-size: inherit;
-    }
-
-    h6 tt, h6 code {
-        font-size: inherit;
-    }
-
-    h1 {
-        padding-bottom: 0.3em;
-        font-size: 2.25em;
-        line-height: 1.2;
-        border-bottom: 1px solid rgb(238, 238, 238);
-    }
-
-    h2 {
-        padding-bottom: 0.3em;
-        font-size: 1.75em;
-        line-height: 1.225;
-        border-bottom: 1px solid rgb(238, 238, 238);
-    }
-
-    h3 {
-        font-size: 1.5em;
-        line-height: 1.43;
-    }
-
-    h4 {
-        font-size: 1.25em;
-    }
-
-    h5 {
-        font-size: 1em;
-    }
-
-    h6 {
-        font-size: 1em;
-        color: rgb(119, 119, 119);
-    }
-
-    p, blockquote, ul, ol, dl, table {
-        margin: 0.8em 0px;
-    }
-
-    li > ol, li > ul {
-        margin: 0px;
-    }
-
-    hr {
-        height: 2px;
-        padding: 0px;
-        margin: 16px 0px;
-        background-color: rgb(231, 231, 231);
-        border: 0px none;
-        overflow: hidden;
-        box-sizing: content-box;
-    }
-
-    li p.first {
-        display: inline-block;
-    }
-
-    ul, ol {
-        padding-left: 30px;
-    }
-
-    ul:first-child, ol:first-child {
-        margin-top: 0px;
-    }
-
-    ul:last-child, ol:last-child {
-        margin-bottom: 0px;
-    }
-
-    blockquote {
-        border-left: 4px solid rgb(223, 226, 229);
-        padding: 0px 15px;
-        color: rgb(119, 119, 119);
-    }
-
-    blockquote blockquote {
-        padding-right: 0px;
-    }
-
-    table {
-        padding: 0px;
-        word-break: initial;
-    }
-
-    table tr {
-        border-top: 1px solid rgb(223, 226, 229);
-        margin: 0px;
-        padding: 0px;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: rgb(248, 248, 248);
-    }
-
-    table tr th {
-        font-weight: bold;
-        border-width: 1px 1px 0px;
-        border-top-style: solid;
-        border-right-style: solid;
-        border-left-style: solid;
-        border-top-color: rgb(223, 226, 229);
-        border-right-color: rgb(223, 226, 229);
-        border-left-color: rgb(223, 226, 229);
-        border-image: initial;
-        border-bottom-style: initial;
-        border-bottom-color: initial;
-        margin: 0px;
-        padding: 6px 13px;
-    }
-
-    table tr td {
-        border: 1px solid rgb(223, 226, 229);
-        margin: 0px;
-        padding: 6px 13px;
-    }
-
-    table tr th:first-child, table tr td:first-child {
-        margin-top: 0px;
-    }
-
-    table tr th:last-child, table tr td:last-child {
-        margin-bottom: 0px;
-    }
-
-    .CodeMirror-lines {
-        padding-left: 4px;
-    }
-
-    .code-tooltip {
-        box-shadow: rgba(0, 28, 36, 0.3) 0px 1px 1px 0px;
-        border-top: 1px solid rgb(238, 242, 242);
-    }
-
-    .md-fences, code, tt {
-        border: 1px solid rgb(231, 234, 237);
-        background-color: rgb(248, 248, 248);
-        border-radius: 3px;
-        padding: 2px 4px 0px;
-        font-size: 0.9em;
-    }
-
-    code {
-        background-color: rgb(243, 244, 244);
-        padding: 0px 2px;
-    }
-
-    .md-fences {
-        margin-bottom: 15px;
-        margin-top: 15px;
-        padding-top: 8px;
-        padding-bottom: 6px;
-    }
-
-    .md-task-list-item > input {
-        margin-left: -1.3em;
-    }
-
-    @media print {
-        html {
-            font-size: 13px;
-        }
-
-        table, pre {
-            break-inside: avoid;
-        }
-
-        pre {
-            overflow-wrap: break-word;
-        }
-    }
-
-    .md-fences {
-        background-color: rgb(248, 248, 248);
-    }
-
-    #write pre.md-meta-block {
-        padding: 1rem;
-        font-size: 85%;
-        line-height: 1.45;
-        background-color: rgb(247, 247, 247);
-        border: 0px;
-        border-radius: 3px;
-        color: rgb(119, 119, 119);
-        margin-top: 0px !important;
-    }
-
-    .mathjax-block > .code-tooltip {
-        bottom: 0.375rem;
-    }
-
-    .md-mathjax-midline {
-        background: rgb(250, 250, 250);
-    }
-
-    #write > h3.md-focus::before {
-        left: -1.5625rem;
-        top: 0.375rem;
-    }
-
-    #write > h4.md-focus::before {
-        left: -1.5625rem;
-        top: 0.285714rem;
-    }
-
-    #write > h5.md-focus::before {
-        left: -1.5625rem;
-        top: 0.285714rem;
-    }
-
-    #write > h6.md-focus::before {
-        left: -1.5625rem;
-        top: 0.285714rem;
-    }
-
-    .md-image > .md-meta {
-        border-radius: 3px;
-        padding: 2px 0px 0px 4px;
-        font-size: 0.9em;
-        color: inherit;
-    }
-
-    .md-tag {
-        color: rgb(167, 167, 167);
-        opacity: 1;
-    }
-
-    .md-toc {
-        margin-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .sidebar-tabs {
-        border-bottom: none;
-    }
-
-    #typora-quick-open {
-        border: 1px solid rgb(221, 221, 221);
-        background-color: rgb(248, 248, 248);
-    }
-
-    #typora-quick-open-item {
-        background-color: rgb(250, 250, 250);
-        border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238);
-        border-style: solid;
-        border-width: 1px;
-    }
-
-    .on-focus-mode blockquote {
-        border-left-color: rgba(85, 85, 85, 0.12);
-    }
-
-    header, .context-menu, .megamenu-content, footer {
-        font-family: "Segoe UI", Arial, sans-serif;
-    }
-
-    .file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state {
-        visibility: visible;
-    }
-
-    .mac-seamless-mode #typora-sidebar {
-        background-color: var(--side-bar-bg-color);
-    }
-
-    .md-lang {
-        color: rgb(180, 101, 77);
-    }
-
-    .html-for-mac .context-menu {
-        --item-hover-bg-color: #E6F0FE;
-    }
-
-    #md-notification .btn {
-        border: 0px;
-    }
-
-    .dropdown-menu .divider {
-        border-color: rgb(229, 229, 229);
-    }
-
-    .ty-preferences .window-content {
-        background-color: rgb(250, 250, 250);
-    }
-
-    .ty-preferences .nav-group-item.active {
-        color: white;
-        background: rgb(153, 153, 153);
-    }
-
-
-    </style>
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style>
 </head>
-<body class='typora-export os-windows'>
-<div class='is-node' id='write'>
-    <div class='md-toc' mdtype='toc'><p class="md-toc-content"><span class="md-toc-item md-toc-h1" data-ref="n3"><a
-            class="md-toc-inner" href="#introduction">Introduction</a></span><span class="md-toc-item md-toc-h1"
-                                                                                   data-ref="n5"><a class="md-toc-inner"
-                                                                                                    href="#brief-design">Brief Design</a></span><span
-            class="md-toc-item md-toc-h1" data-ref="n16"><a class="md-toc-inner"
-                                                            href="#architecture">Architecture</a></span><span
-            class="md-toc-item md-toc-h1" data-ref="n18"><a class="md-toc-inner" href="#activityfragment-two">Activity/Fragment 2️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n20"><a class="md-toc-inner"
-                                                            href="#home-three">Home 3️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n21"><a class="md-toc-inner"
-                                                            href="#channel-zero">Channel 0️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#recommend-six">Recommend 6️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#timeline-zero">Timeline​ 0️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n27"><a class="md-toc-inner"
-                                                            href="#course-one">Course 1️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n29"><a class="md-toc-inner"
-                                                            href="#my-courses-zero">My Courses 0️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n31"><a class="md-toc-inner" href="#calendar-zero">Calendar 0️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n33"><a class="md-toc-inner" href="#authentication-four">Authentication 4️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n34"><a class="md-toc-inner"
-                                                            href="#profile-zero">Profile 0️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner"
-                                                            href="#login-eight">Login 8️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n40"><a class="md-toc-inner" href="#register-five">Register​ 5️⃣</a></span><span
-            class="md-toc-item md-toc-h4" data-ref="n41"><a class="md-toc-inner" href="#profile-data-eight">Profile Data 8️⃣</a></span><span
-            class="md-toc-item md-toc-h4" data-ref="n43"><a class="md-toc-inner" href="#user-password-eight">User Password 8️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner"
-                                                            href="#setting-three">Setting 3️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n46"><a class="md-toc-inner"
-                                                            href="#log-out-six">log out 6️⃣</a></span><span
-            class="md-toc-item md-toc-h3" data-ref="n47"><a class="md-toc-inner" href="#change-language-six">change language 6️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n48"><a class="md-toc-inner"
-                                                            href="#message-zero">Message 0️⃣</a></span><span
-            class="md-toc-item md-toc-h1" data-ref="n50"><a class="md-toc-inner"
-                                                            href="#viewmodel-four">ViewModel 4️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n54"><a class="md-toc-inner" href="#courseviewmodel-three"><code>CourseViewModel</code> 3️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n56"><a class="md-toc-inner" href="#userviewmodel-three"><code>UserViewModel</code> 3️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n58"><a class="md-toc-inner"
-                                                            href="#registrationviewmodel-five"><code>RegistrationViewModel</code> 5️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n60"><a class="md-toc-inner" href="#loginviewmodel-five"><code>LoginViewModel</code> 5️⃣</a></span><span
-            class="md-toc-item md-toc-h1" data-ref="n62"><a class="md-toc-inner"
-                                                            href="#repository-four">Repository 4️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n64"><a class="md-toc-inner"
-                                                            href="#model-room-eight">Model-Room 8️⃣</a></span><span
-            class="md-toc-item md-toc-h2" data-ref="n69"><a class="md-toc-inner" href="#remote-data-source-zero">Remote Data Source 0️⃣</a></span>
-    </p></div>
-    <p><span>Emoji </span>0️⃣<span> means I have do nothing yet, </span>🔟<span> means I have finished it.</span></p>
-    <h1><a class="md-header-anchor" name="introduction"></a><span>Introduction</span></h1>
-    <p><span>E-learning is a platform that provides courses to students. In our app, students can explore courses, study and communicate.</span>
-    </p>
-    <h1><a class="md-header-anchor" name="brief-design"></a><span>Brief Design</span></h1>
-    <p><span>The app can be divided into these main functions:</span></p>
-    <ul>
-        <li><span>Explore All Courses</span></li>
-        <li><span>Explore Registered Courses</span></li>
-        <li><span>Calendar</span></li>
-        <li><span>Communicate</span></li>
-    </ul>
-    <h1><a class="md-header-anchor" name="architecture"></a><span>Architecture</span></h1>
-    <div class="md-diagram-panel">
-        <svg height="100%" id="mermaidChart0" style="" viewBox="0 0 497.6875 516.5" xmlns="http://www.w3.org/2000/svg">
-            <style></style>
-            <style>#mermaidChart0 {
-                color: rgb(51, 51, 51);
-                font: normal normal 400 normal 14.4px / 14.4px "Lucida Console", Consolas, Courier, monospace;
-            }</style>
-            <g transform="translate(32, 32)">
-                <g class="output">
-                    <g class="clusters"></g>
-                    <g class="edgePaths">
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M195.1484375,62.5L195.1484375,87.5L195.1484375,112.5"
-                                  marker-end="url(#arrowhead24)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead24" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M195.1484375,155L195.1484375,180L195.1484375,205"
-                                  marker-end="url(#arrowhead25)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead25" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M144.18433277027026,247.5L84.2265625,272.5L84.2265625,297.5"
-                                  marker-end="url(#arrowhead26)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead26" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M246.11254222972974,247.5L306.0703125,272.5L306.0703125,297.5"
-                                  marker-end="url(#arrowhead27)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead27" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M84.2265625,340L84.2265625,365L84.2265625,390"
-                                  marker-end="url(#arrowhead28)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead28" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M306.0703125,340L306.0703125,365L306.0703125,390"
-                                  marker-end="url(#arrowhead29)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead29" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                    </g>
-                    <g class="edgeLabels">
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                    </g>
-                    <g class="nodes">
-                        <g class="node" id="A" style="opacity: 1;" transform="translate(195.1484375,41.25)">
-                            <rect height="42.5" rx="0" ry="0" width="204.390625" x="-102.1953125" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-92.1953125,-11.25)">
-                                    <foreignObject height="22.5" width="184.39453125">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Activity/Fragment
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="B" style="opacity: 1;" transform="translate(195.1484375,133.75)">
-                            <rect height="42.5" rx="0" ry="0" width="117.609375" x="-58.8046875" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-48.8046875,-11.25)">
-                                    <foreignObject height="22.5" width="97.6171875">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">ViewModel
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="C" style="opacity: 1;" transform="translate(195.1484375,226.25)">
-                            <rect height="42.5" rx="0" ry="0" width="128.453125" x="-64.2265625" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-54.2265625,-11.25)">
-                                    <foreignObject height="22.5" width="108.45703125">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Repository
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="D" style="opacity: 1;" transform="translate(84.2265625,318.75)">
-                            <rect height="42.5" rx="0" ry="0" width="128.453125" x="-64.2265625" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-54.2265625,-11.25)">
-                                    <foreignObject height="22.5" width="108.45703125">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Model-Room
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="E" style="opacity: 1;" transform="translate(306.0703125,318.75)">
-                            <rect height="42.5" rx="0" ry="0" width="215.234375" x="-107.6171875" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-97.6171875,-11.25)">
-                                    <foreignObject height="22.5" width="195.234375">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Remote Data Source
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="F" style="opacity: 1;" transform="translate(84.2265625,411.25)">
-                            <rect height="42.5" rx="0" ry="0" width="85.078125" x="-42.5390625" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-32.5390625,-11.25)">
-                                    <foreignObject height="22.5" width="65.078125">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">SQLite
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="G" style="opacity: 1;" transform="translate(306.0703125,411.25)">
-                            <rect height="42.5" rx="0" ry="0" width="128.453125" x="-64.2265625" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-54.2265625,-11.25)">
-                                    <foreignObject height="22.5" width="108.45703125">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Web Server
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </svg>
-    </div>
-    <h1><a class="md-header-anchor" name="activityfragment-two"></a><span>Activity/Fragment </span>2️⃣</h1>
-    <p><span>In my architecture, there is only one main activity. All other views are switched in the activity.</span>
-        <span>	</span>
-        <span>Thanks to Google’s new navigation method, I just add all navigation destinations and actions in the </span><code>nav_graph.xml</code><span>, instead of using </span><code>FragmentManager</code><span>.</span>
-        <span>	</span>
-        <span>Main navigation method is use navigation drawer.</span></p>
-    <h2><a class="md-header-anchor" name="home-three"></a><span>Home </span>3️⃣</h2>
-    <h3><a class="md-header-anchor" name="channel-zero"></a><span>Channel </span>0️⃣</h3>
-    <p><span>In order to help student choose specific type of courses, we can divide all courses into different categories.</span>
-    </p>
-    <h3><a class="md-header-anchor" name="recommend-six"></a><span>Recommend </span>6️⃣</h3>
-    <p><span>Show recommend courses to students.</span></p>
-    <h3><a class="md-header-anchor" name="timeline-zero"></a><span>Timeline​ </span>0️⃣</h3>
-    <p><span>Show your courses’ news or so on.</span></p>
-    <h2><a class="md-header-anchor" name="course-one"></a><span>Course </span>1️⃣</h2>
-    <p><span>Show courses’ information, register and study.</span></p>
-    <h2><a class="md-header-anchor" name="my-courses-zero"></a><span>My Courses </span>0️⃣</h2>
-    <p><span>Show courses you registered only.</span></p>
-    <h2><a class="md-header-anchor" name="calendar-zero"></a><span>Calendar </span>0️⃣</h2>
-    <p><span>Show your courses’ date.</span></p>
-    <h2><a class="md-header-anchor" name="authentication-four"></a><span>Authentication </span>4️⃣</h2>
-    <h3><a class="md-header-anchor" name="profile-zero"></a><span>Profile </span>0️⃣</h3>
-    <p><span>Show user’s profile and edit.</span></p>
-    <p><span>If not authenticated, navigate to login.</span></p>
-    <h3><a class="md-header-anchor" name="login-eight"></a><span>Login </span>8️⃣</h3>
-    <p><span>Login to account.</span></p>
-    <p><span>If press back, navigate to home.</span></p>
-    <h3><a class="md-header-anchor" name="register-five"></a><span>Register​ </span>5️⃣</h3><h4><a
-        class="md-header-anchor" name="profile-data-eight"></a><span>Profile Data </span>8️⃣</h4>
-    <p><span>input user’s name.</span></p><h4><a class="md-header-anchor" name="user-password-eight"></a><span>User Password </span>8️⃣
-</h4>
-    <p><span>input user’s account and password.</span></p>
-    <h2><a class="md-header-anchor" name="setting-three"></a><span>Setting </span>3️⃣</h2>
-    <h3><a class="md-header-anchor" name="log-out-six"></a><span>log out </span>6️⃣</h3>
-    <h3><a class="md-header-anchor" name="change-language-six"></a><span>change language </span>6️⃣</h3>
-    <h2><a class="md-header-anchor" name="message-zero"></a><span>Message </span>0️⃣</h2>
-    <p><span>Under planning..., may be abandoned.</span></p>
-    <h1><a class="md-header-anchor" name="viewmodel-four"></a><span>ViewModel </span>4️⃣</h1>
-    <blockquote><p><span>The </span><a href='https://developer.android.com/reference/androidx/lifecycle/ViewModel.html'><code>ViewModel</code></a><span> class is designed to store and manage UI-related data in a lifecycle conscious way. The </span><a
-            href='https://developer.android.com/reference/androidx/lifecycle/ViewModel.html'><code>ViewModel</code></a><span> class allows data to survive configuration changes such as screen rotations. </span>
-    </p></blockquote>
-    <p><span>ViewModel can store some </span><code>LiveData</code><span>, so activities and fragments can observe the data change and do UI or other operations, just like the Observe Pattern.</span>
-    </p>
-    <h2><a class="md-header-anchor" name="courseviewmodel-three"></a><code>CourseViewModel</code><span> </span>3️⃣</h2>
-    <p><span>handle CRUD of courses.</span></p>
-    <h2><a class="md-header-anchor" name="userviewmodel-three"></a><code>UserViewModel</code><span> </span>3️⃣</h2>
-    <p><span>handle CRUD if user.</span></p>
-    <h2><a class="md-header-anchor"
-           name="registrationviewmodel-five"></a><code>RegistrationViewModel</code><span> </span>5️⃣</h2>
-    <p><span>handle Registration of user.</span></p>
-    <h2><a class="md-header-anchor" name="loginviewmodel-five"></a><code>LoginViewModel</code><span> </span>5️⃣</h2>
-    <p><span>handle Login of user.</span></p>
-    <h1><a class="md-header-anchor" name="repository-four"></a><span>Repository </span>4️⃣</h1>
-    <p><span>To decoupled ViewModel from database and network, the repository controls them.  It decreases the maintain work if I add net server support later.</span>
-        <span>	</span></p>
-    <h2><a class="md-header-anchor" name="model-room-eight"></a><span>Model-Room </span>8️⃣</h2>
-    <blockquote><p><span>Room provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite. </span>
-    </p></blockquote>
-    <div class="md-diagram-panel">
-        <svg height="100%" id="mermaidChart1" style="" viewBox="0 0 340.40625 331.5" xmlns="http://www.w3.org/2000/svg">
-            <style></style>
-            <style>#mermaidChart1 {
-                color: rgb(51, 51, 51);
-                font: normal normal 400 normal 14.4px / 14.4px "Lucida Console", Consolas, Courier, monospace;
-            }</style>
-            <g transform="translate(32, 32)">
-                <g class="output">
-                    <g class="clusters"></g>
-                    <g class="edgePaths">
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M160.06038851351352,62.5L230.140625,87.5L230.140625,112.5"
-                                  marker-end="url(#arrowhead46)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead46" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M100.4921875,62.5L100.4921875,87.5L100.4921875,112.5"
-                                  marker-end="url(#arrowhead47)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead47" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path"
-                                  d="M59.88386824324324,62.5L12.109375,87.5L12.109375,133.75L12.109375,180L59.88386824324324,205"
-                                  marker-end="url(#arrowhead48)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead48" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M100.4921875,155L100.4921875,180L100.4921875,205"
-                                  marker-end="url(#arrowhead49)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead49" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                        <g class="edgePath" style="opacity: 1;">
-                            <path class="path" d="M230.140625,155L230.140625,180L160.06038851351352,205"
-                                  marker-end="url(#arrowhead50)" style="fill:none"></path>
-                            <defs>
-                                <marker id="arrowhead50" markerHeight="6" markerUnits="strokeWidth" markerWidth="8" orient="auto"
-                                        refX="9" refY="5" viewBox="0 0 10 10">
-                                    <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
-                                          style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
-                                </marker>
-                            </defs>
-                        </g>
-                    </g>
-                    <g class="edgeLabels">
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                        <g class="edgeLabel" style="opacity: 1;" transform="">
-                            <g class="label" transform="translate(0,0)">
-                                <foreignObject height="0" width="0">
-                                    <div style="display: inline-block; white-space: nowrap;"
-                                         xmlns="http://www.w3.org/1999/xhtml"><span
-                                            class="edgeLabel"></span></div>
-                                </foreignObject>
-                            </g>
-                        </g>
-                    </g>
-                    <g class="nodes">
-                        <g class="node" id="A" style="opacity: 1;" transform="translate(100.4921875,41.25)">
-                            <rect height="42.5" rx="0" ry="0" width="160.984375" x="-80.4921875" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-70.4921875,-11.25)">
-                                    <foreignObject height="22.5" width="140.99609375">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Room Database
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="B" style="opacity: 1;" transform="translate(230.140625,133.75)">
-                            <rect height="42.5" rx="0" ry="0" width="52.53125" x="-26.265625" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-16.265625,-11.25)">
-                                    <foreignObject height="22.5" width="32.5390625">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">DAO
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="C" style="opacity: 1;" transform="translate(100.4921875,133.75)">
-                            <rect height="42.5" rx="0" ry="0" width="106.765625" x="-53.3828125" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-43.3828125,-11.25)">
-                                    <foreignObject height="22.5" width="86.77734375">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Entities
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                        <g class="node" id="D" style="opacity: 1;" transform="translate(100.4921875,226.25)">
-                            <rect height="42.5" rx="0" ry="0" width="139.3125" x="-69.65625" y="-21.25"></rect>
-                            <g class="label" transform="translate(0,0)">
-                                <g transform="translate(-59.65625,-11.25)">
-                                    <foreignObject height="22.5" width="119.31640625">
-                                        <div style="display: inline-block; white-space: nowrap;"
-                                             xmlns="http://www.w3.org/1999/xhtml">Rest of App
-                                        </div>
-                                    </foreignObject>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </svg>
-    </div>
-    <p><span>Just like mybatis with Spring, Room help me reduce code to CRUD.</span>
-        <span>	</span></p>
-    <h2><a class="md-header-anchor" name="remote-data-source-zero"></a><span>Remote Data Source </span>0️⃣</h2>
-    <p><span>I will develop it in Spring.</span></p>
-    <p>&nbsp;</p></div>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n451"><a class="md-toc-inner" style="cursor: pointer;" href="#introduction">Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n453"><a class="md-toc-inner" style="cursor: pointer;" href="#brief-design">Brief Design</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n464"><a class="md-toc-inner" style="cursor: pointer;" href="#architecture">Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n466"><a class="md-toc-inner" style="cursor: pointer;" href="#activityfragment-two">Activity/Fragment 2️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n468"><a class="md-toc-inner" style="cursor: pointer;" href="#home-three">Home 3️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n469"><a class="md-toc-inner" style="cursor: pointer;" href="#channel-zero">Channel 0️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n471"><a class="md-toc-inner" style="cursor: pointer;" href="#recommend-six">Recommend 6️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n473"><a class="md-toc-inner" style="cursor: pointer;" href="#timeline-zero">Timeline 0️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n475"><a class="md-toc-inner" style="cursor: pointer;" href="#course-one">Course 1️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n477"><a class="md-toc-inner" style="cursor: pointer;" href="#my-courses-zero">My Courses 0️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n479"><a class="md-toc-inner" style="cursor: pointer;" href="#calendar-zero">Calendar 0️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n481"><a class="md-toc-inner" style="cursor: pointer;" href="#authentication-four">Authentication 4️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n482"><a class="md-toc-inner" style="cursor: pointer;" href="#profile-zero">Profile 0️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n485"><a class="md-toc-inner" style="cursor: pointer;" href="#login-eight">Login 8️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n488"><a class="md-toc-inner" style="cursor: pointer;" href="#register-five">Register 5️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n489"><a class="md-toc-inner" style="cursor: pointer;" href="#profile-data-eight">Profile Data 8️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n491"><a class="md-toc-inner" style="cursor: pointer;" href="#user-password-eight">User Password 8️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n493"><a class="md-toc-inner" style="cursor: pointer;" href="#setting-three">Setting 3️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n494"><a class="md-toc-inner" style="cursor: pointer;" href="#log-out-six">log out 6️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n495"><a class="md-toc-inner" style="cursor: pointer;" href="#change-language-six">change language 6️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n496"><a class="md-toc-inner" style="cursor: pointer;" href="#message-zero">Message 0️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n498"><a class="md-toc-inner" style="cursor: pointer;" href="#viewmodel-four">ViewModel 4️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n502"><a class="md-toc-inner" style="cursor: pointer;" href="#courseviewmodel-three"><code>CourseViewModel</code> 3️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n504"><a class="md-toc-inner" style="cursor: pointer;" href="#userviewmodel-three"><code>UserViewModel</code> 3️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n506"><a class="md-toc-inner" style="cursor: pointer;" href="#registrationviewmodel-five"><code>RegistrationViewModel</code> 5️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n508"><a class="md-toc-inner" style="cursor: pointer;" href="#loginviewmodel-five"><code>LoginViewModel</code> 5️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n510"><a class="md-toc-inner" style="cursor: pointer;" href="#repository-four">Repository 4️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n512"><a class="md-toc-inner" style="cursor: pointer;" href="#model-room-eight">Model-Room 8️⃣</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n517"><a class="md-toc-inner" style="cursor: pointer;" href="#remote-data-source-zero">Remote Data Source 0️⃣</a></span></p></div><p><span>Emoji </span>0️⃣<span> means I have do nothing yet, </span>🔟<span> means I have finished it.</span></p><h1><a name="introduction" class="md-header-anchor"></a><span>Introduction</span></h1><p><span>E-learning is a platform that provides courses to students. In our app, students can explore courses, study and communicate.</span></p><h1><a name="brief-design" class="md-header-anchor"></a><span>Brief Design</span></h1><p><span>The app can be divided into these main functions:</span></p><ul><li><span>Explore All Courses</span></li><li><span>Explore Registered Courses</span></li><li><span>Calendar</span></li><li><span>Communicate</span></li></ul><h1><a name="architecture" class="md-header-anchor"></a><span>Architecture</span></h1><div class="md-diagram-panel"><svg id="mermaidChart12" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 422.375px;" viewBox="0 0 422.375 458.1875"><style>
+:root { --mermaid-font-family: sans-serif}
+:root { --mermaid-alt-font-family: sans-serif}</style><style></style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M206.296875,68.4375L206.296875,93.4375L206.296875,118.4375" marker-end="url(#arrowhead324)" style="fill:none"></path><defs><marker id="arrowhead324" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M206.296875,166.875L206.296875,191.875L206.296875,216.875" marker-end="url(#arrowhead325)" style="fill:none"></path><defs><marker id="arrowhead325" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M150.15550595238096,265.3125L92.203125,290.3125L92.203125,315.3125" marker-end="url(#arrowhead326)" style="fill:none"></path><defs><marker id="arrowhead326" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M262.43824404761904,265.3125L320.390625,290.3125L320.390625,315.3125" marker-end="url(#arrowhead327)" style="fill:none"></path><defs><marker id="arrowhead327" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M92.203125,363.75L92.203125,388.75L92.203125,413.75" marker-end="url(#arrowhead328)" style="fill:none"></path><defs><marker id="arrowhead328" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M320.390625,363.75L320.390625,388.75L320.390625,413.75" marker-end="url(#arrowhead329)" style="fill:none"></path><defs><marker id="arrowhead329" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(206.296875,44.21875)" style="opacity: 1;"><rect rx="0" ry="0" x="-93.4921875" y="-24.21875" width="186.984375" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-83.4921875,-14.21875)"><foreignObject width="166.984375" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Activity/Fragment</div></foreignObject></g></g></g><g class="node" id="B" transform="translate(206.296875,142.65625)" style="opacity: 1;"><rect rx="0" ry="0" x="-62.515625" y="-24.21875" width="125.03125" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-52.515625,-14.21875)"><foreignObject width="105.03125" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">ViewModel</div></foreignObject></g></g></g><g class="node" id="C" transform="translate(206.296875,241.09375)" style="opacity: 1;"><rect rx="0" ry="0" x="-60.140625" y="-24.21875" width="120.28125" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-50.140625,-14.21875)"><foreignObject width="100.2890625" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Repository</div></foreignObject></g></g></g><g class="node" id="D" transform="translate(92.203125,339.53125)" style="opacity: 1;"><rect rx="0" ry="0" x="-72.203125" y="-24.21875" width="144.40625" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-62.203125,-14.21875)"><foreignObject width="124.4140625" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Model-Room</div></foreignObject></g></g></g><g class="node" id="E" transform="translate(320.390625,339.53125)" style="opacity: 1;"><rect rx="0" ry="0" x="-105.984375" y="-24.21875" width="211.96875" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-95.984375,-14.21875)"><foreignObject width="191.96875" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Remote Data Source</div></foreignObject></g></g></g><g class="node" id="F" transform="translate(92.203125,437.96875)" style="opacity: 1;"><rect rx="0" ry="0" x="-40.3359375" y="-24.21875" width="80.671875" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-30.3359375,-14.21875)"><foreignObject width="60.6796875" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">SQLite</div></foreignObject></g></g></g><g class="node" id="G" transform="translate(320.390625,437.96875)" style="opacity: 1;"><rect rx="0" ry="0" x="-63.828125" y="-24.21875" width="127.65625" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-53.828125,-14.21875)"><foreignObject width="107.65625" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Web Server</div></foreignObject></g></g></g></g></g></g></svg></div><h1><a name="activityfragment-two" class="md-header-anchor"></a><span>Activity/Fragment </span>2️⃣</h1><p><span>In my architecture, there is only one main activity. All other views are switched in the activity.</span>
+<span>	</span>
+<span>Thanks to Google’s new navigation method, I just add all navigation destinations and actions in the </span><code>nav_graph.xml</code><span>, instead of using </span><code>FragmentManager</code><span>.</span>
+<span>	</span>
+<span>Main navigation method is use navigation drawer.</span></p><h2><a name="home-three" class="md-header-anchor"></a><span>Home </span>3️⃣</h2><h3><a name="channel-zero" class="md-header-anchor"></a><span>Channel </span>0️⃣</h3><p><span>In order to help student choose specific type of courses, we can divide all courses into different categories.</span></p><h3><a name="recommend-six" class="md-header-anchor"></a><span>Recommend </span>6️⃣</h3><p><span>Show recommend courses to students.</span></p><h3><a name="timeline-zero" class="md-header-anchor"></a><span>Timeline </span>0️⃣</h3><p><span>Show your courses’ news or so on.</span></p><h2><a name="course-one" class="md-header-anchor"></a><span>Course </span>1️⃣</h2><p><span>Show courses’ information, register and study.</span></p><h2><a name="my-courses-zero" class="md-header-anchor"></a><span>My Courses </span>0️⃣</h2><p><span>Show courses you registered only.</span></p><h2><a name="calendar-zero" class="md-header-anchor"></a><span>Calendar </span>0️⃣</h2><p><span>Show your courses’ date.</span></p><h2><a name="authentication-four" class="md-header-anchor"></a><span>Authentication </span>4️⃣</h2><h3><a name="profile-zero" class="md-header-anchor"></a><span>Profile </span>0️⃣</h3><p><span>Show user’s profile and edit.</span></p><p><span>If not authenticated, navigate to login.</span></p><h3><a name="login-eight" class="md-header-anchor"></a><span>Login </span>8️⃣</h3><p><span>Login to account.</span></p><p><span>If press back, navigate to home.</span></p><h3><a name="register-five" class="md-header-anchor"></a><span>Register </span>5️⃣</h3><h4><a name="profile-data-eight" class="md-header-anchor"></a><span>Profile Data </span>8️⃣</h4><p><span>input user’s name.</span></p><h4><a name="user-password-eight" class="md-header-anchor"></a><span>User Password </span>8️⃣</h4><p><span>input user’s account and password.</span></p><h2><a name="setting-three" class="md-header-anchor"></a><span>Setting </span>3️⃣</h2><h3><a name="log-out-six" class="md-header-anchor"></a><span>log out </span>6️⃣</h3><h3><a name="change-language-six" class="md-header-anchor"></a><span>change language </span>6️⃣</h3><h2><a name="message-zero" class="md-header-anchor"></a><span>Message </span>0️⃣</h2><p><span>Under planning..., may be abandoned.</span></p><h1><a name="viewmodel-four" class="md-header-anchor"></a><span>ViewModel </span>4️⃣</h1><blockquote><p><span>The </span><a href='https://developer.android.com/reference/androidx/lifecycle/ViewModel.html' target='_blank'><code>ViewModel</code></a><span> class is designed to store and manage UI-related data in a lifecycle conscious way. The </span><a href='https://developer.android.com/reference/androidx/lifecycle/ViewModel.html' target='_blank'><code>ViewModel</code></a><span> class allows data to survive configuration changes such as screen rotations. </span></p></blockquote><p><span>ViewModel can store some </span><code>LiveData</code><span>, so activities and fragments can observe the data change and do UI or other operations, just like the Observe Pattern.</span></p><h2><a name="courseviewmodel-three" class="md-header-anchor"></a><code>CourseViewModel</code><span> </span>3️⃣</h2><p><span>handle CRUD of courses.</span></p><h2><a name="userviewmodel-three" class="md-header-anchor"></a><code>UserViewModel</code><span> </span>3️⃣</h2><p><span>handle CRUD if user.</span></p><h2><a name="registrationviewmodel-five" class="md-header-anchor"></a><code>RegistrationViewModel</code><span> </span>5️⃣</h2><p><span>handle Registration of user.</span></p><h2><a name="loginviewmodel-five" class="md-header-anchor"></a><code>LoginViewModel</code><span> </span>5️⃣</h2><p><span>handle Login of user.</span></p><h1><a name="repository-four" class="md-header-anchor"></a><span>Repository </span>4️⃣</h1><p><span>To decoupled ViewModel from database and network, the repository controls them.  It decreases the maintain work if I add net server support later.</span>
+<span>	</span></p><h2><a name="model-room-eight" class="md-header-anchor"></a><span>Model-Room </span>8️⃣</h2><blockquote><p><span>Room provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite. </span></p></blockquote><div class="md-diagram-panel"><svg id="mermaidChart13" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 258.6328125px;" viewBox="0 0 258.6328125 261.3125"><style>
+:root { --mermaid-font-family: sans-serif}
+:root { --mermaid-alt-font-family: sans-serif}</style><style></style><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M166.34288194444446,68.4375L230.3984375,93.4375L230.3984375,118.4375" marker-end="url(#arrowhead346)" style="fill:none"></path><defs><marker id="arrowhead346" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M104.2890625,68.4375L104.2890625,93.4375L104.2890625,118.4375" marker-end="url(#arrowhead347)" style="fill:none"></path><defs><marker id="arrowhead347" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M65.47755456349206,68.4375L25.4140625,93.4375L25.4140625,142.65625L25.4140625,191.875L65.47755456349206,216.875" marker-end="url(#arrowhead348)" style="fill:none"></path><defs><marker id="arrowhead348" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M104.2890625,166.875L104.2890625,191.875L104.2890625,216.875" marker-end="url(#arrowhead349)" style="fill:none"></path><defs><marker id="arrowhead349" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M230.3984375,166.875L230.3984375,191.875L166.34288194444446,216.875" marker-end="url(#arrowhead350)" style="fill:none"></path><defs><marker id="arrowhead350" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="A" transform="translate(104.2890625,44.21875)" style="opacity: 1;"><rect rx="0" ry="0" x="-84.2890625" y="-24.21875" width="168.578125" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-74.2890625,-14.21875)"><foreignObject width="148.578125" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Room Database</div></foreignObject></g></g></g><g class="node" id="B" transform="translate(230.3984375,142.65625)" style="opacity: 1;"><rect rx="0" ry="0" x="-32.234375" y="-24.21875" width="64.46875" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-22.234375,-14.21875)"><foreignObject width="44.4765625" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">DAO</div></foreignObject></g></g></g><g class="node" id="C" transform="translate(104.2890625,142.65625)" style="opacity: 1;"><rect rx="0" ry="0" x="-43.875" y="-24.21875" width="87.75" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-33.875,-14.21875)"><foreignObject width="67.75" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Entities</div></foreignObject></g></g></g><g class="node" id="D" transform="translate(104.2890625,241.09375)" style="opacity: 1;"><rect rx="0" ry="0" x="-64.703125" y="-24.21875" width="129.40625" height="48.4375"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-54.703125,-14.21875)"><foreignObject width="109.40625" height="28.4375"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 0.9rem; line-height: 28.4375px; white-space: nowrap;">Rest of App</div></foreignObject></g></g></g></g></g></g></svg></div><p><span>Just like mybatis with Spring, Room help me reduce code to CRUD.</span>
+<span>	</span></p><h2><a name="remote-data-source-zero" class="md-header-anchor"></a><span>Remote Data Source </span>0️⃣</h2><p><span>I will develop it in Spring.</span></p><p>&nbsp;</p></div>
 </body>
 </html>
