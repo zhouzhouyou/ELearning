@@ -5,13 +5,12 @@
     android:layout_margin="@dimen/recycler_item_margin">
 
     <data>
-
         <variable
             name="course"
-            type="com.yuri.elearning.datasource.database.entity.Course" />
+            type="com.yuri.elearning.model.CourseBriefInfo" />
         <variable
             name="handler"
-            type="com.yuri.elearning.ui.MyHandler" />
+            type="com.yuri.elearning.view.MyHandler" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -21,13 +20,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="@{view -> handler.navigateToCourse(view, course)}">
+            android:onClick="@{view -> handler.navigateToCourse(view, course.id)}">
 
             <ImageView
                 android:id="@+id/course_image"
-                android:layout_width="402dp"
-                android:layout_height="204dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:contentDescription="@string/place_holder"
+                android:scaleType="centerCrop"
                 android:src="@drawable/course_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,11 +41,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:text="@{course.name}"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/course_image" />
+                app:layout_constraintTop_toBottomOf="@+id/course_image"
+                tools:text="@string/title" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

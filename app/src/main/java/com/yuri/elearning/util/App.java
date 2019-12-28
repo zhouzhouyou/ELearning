@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
-import com.yuri.elearning.datasource.database.AppDatabase;
+import com.yuri.elearning.data.database.AppDatabase;
 import com.yuri.elearning.util.language.LanguageUtil;
 
 import androidx.room.Room;

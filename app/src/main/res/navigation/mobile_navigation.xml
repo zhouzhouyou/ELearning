@@ -7,80 +7,81 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.yuri.elearning.ui.home.HomeFragment"
+        android:name="com.yuri.elearning.view.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/home_fragment">
         <action
-            android:id="@+id/action_nav_home_to_nav_course"
-            app:destination="@id/nav_course">
+            android:id="@+id/action_nav_home_to_categoryDetailFragment"
+            app:destination="@id/categoryDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
             <argument
-                android:name="cid"
-                app:argType="integer"
-                android:defaultValue="0"/>
+                android:name="id"
+                app:argType="integer" />
         </action>
     </fragment>
     <fragment
         android:id="@+id/nav_calendar"
-        android:name="com.yuri.elearning.ui.calendar.CalendarFragment"
+        android:name="com.yuri.elearning.view.calendar.CalendarFragment"
         android:label="@string/calendar"
         tools:layout="@layout/calendar_fragment" />
     <fragment
         android:id="@+id/nav_myClasses"
-        android:name="com.yuri.elearning.ui.myClasses.MyClassesFragment"
+        android:name="com.yuri.elearning.view.myCourse.MyCourseFragment"
         android:label="@string/my_classes"
         tools:layout="@layout/my_classes_fragment" />
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.yuri.elearning.ui.settings.SettingsFragment"
+        android:name="com.yuri.elearning.view.settings.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@xml/app_preference" />
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.yuri.elearning.ui.profile.ProfileFragment"
+        android:name="com.yuri.elearning.view.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/profile_fragment" />
     <fragment
         android:id="@+id/nav_course"
-        android:name="com.yuri.elearning.ui.course.CourseFragment"
+        android:name="com.yuri.elearning.view.course.CourseFragment"
         android:label="@string/course"
-        tools:layout="@layout/course_fragment" >
+        tools:layout="@layout/course_fragment">
         <argument
             android:name="cid"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
-    <navigation
-        android:id="@+id/register_navigation"
-        app:startDestination="@id/nav_enterUserProfile" >
-        <fragment
-            android:id="@+id/nav_chooseUserPassword"
-            android:name="com.yuri.elearning.ui.authentication.ChooseUserPasswordFragment"
-            android:label="@string/choose_user_password"
-            tools:layout="@layout/choose_user_password_fragment" />
-        <fragment
-            android:id="@+id/nav_enterUserProfile"
-            android:name="com.yuri.elearning.ui.authentication.EnterUserProfileFragment"
-            android:label="@string/enter_user_profile"
-            tools:layout="@layout/enter_user_profile_fragment">
-            <action
-                android:id="@+id/action_nav_enterUserProfile_to_nav_chooseUserPassword"
-                app:destination="@id/nav_chooseUserPassword" />
-        </fragment>
-    </navigation>
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.yuri.elearning.ui.authentication.LoginFragment"
+        android:name="com.yuri.elearning.view.authentication.LoginFragment"
         android:label="@string/login"
-        tools:layout="@layout/login_fragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_register_navigation"
-            app:destination="@id/register_navigation" />
+        tools:layout="@layout/login_fragment"/>
+    <fragment
+        android:id="@+id/nav_lesson"
+        android:name="com.yuri.elearning.view.lesson.LessonFragment"
+        android:label="LessonFragment"
+        tools:layout="@layout/lesson_fragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/nav_message"
-        android:name="com.yuri.elearning.ui.message.MessageMainFragment"
-        android:label="@string/message"
-        tools:layout="@layout/message_main_fragment" />
-
+        android:id="@+id/categoryDetailFragment"
+        android:name="com.yuri.elearning.view.category.CategoryDetailFragment"
+        android:label="CategoryDetailFragment"
+        tools:layout="@layout/course_recycler">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_nav_course"
+        app:destination="@id/nav_course">
+        <argument
+            android:name="cid"
+            app:argType="integer"/>
+    </action>
+    <action android:id="@+id/action_global_nav_lesson" app:destination="@id/nav_lesson" />
 </navigation>

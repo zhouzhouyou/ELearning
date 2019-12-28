@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="lesson_brief_info"
+            type="com.yuri.elearning.model.LessonBriefInfo" />
+        <variable
+            name="handler"
+            type="com.yuri.elearning.view.course.CourseViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="@dimen/tv_margin"
+        android:layout_marginStart="@dimen/tv_margin"
+        android:layout_marginEnd="@dimen/tv_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:onClick="@{view -> handler.jumpToLesson(view, lesson_brief_info.id)}">
+
+            <TextView
+                android:id="@+id/lesson_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{lesson_brief_info.title}"
+                tools:text="@string/title" />
+
+            <TextView
+                android:id="@+id/lesson_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{lesson_brief_info.time.toString()}"
+                tools:text="@tools:sample/date/mmddyy" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</layout>

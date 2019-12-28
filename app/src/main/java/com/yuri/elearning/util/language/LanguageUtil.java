@@ -11,7 +11,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.yuri.elearning.MainActivity;
+import com.yuri.elearning.view.MainActivity;
 import com.yuri.elearning.R;
 
 import java.util.Locale;

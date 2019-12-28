@@ -24,6 +24,11 @@ public abstract class BaseRecyclerAdapter<VH extends RecyclerView.ViewHolder, T>
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
         bindVH(holder, position);
+        afterBindVH(holder, position);
+    }
+
+    protected void afterBindVH(VH holder, int position) {
+        //ignore
     }
 
     protected abstract void bindVH(VH holder, int position);

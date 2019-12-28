@@ -3,7 +3,7 @@ package com.yuri.elearning.util.base;
 import android.app.Application;
 import android.util.Log;
 
-import com.yuri.elearning.datasource.Repository;
+import com.yuri.elearning.data.Repository;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;

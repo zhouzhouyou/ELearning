@@ -12,7 +12,7 @@
     <string name="calendar">日历</string>
     <string name="settings">设置</string>
     <string name="search">搜索</string>
-    <string name="channel">频道</string>
+    <string name="category">分类</string>
     <string name="recommend">推荐</string>
     <string name="timeline">动态</string>
 
@@ -49,4 +49,7 @@
     <string name="language">语言</string>
     <string name="default_language">默认语言</string>
     <string name="invalid_format">格式错误</string>
+    <string name="content">内容</string>
+    <string name="buy">购买</string>
+    <string name="title">标题</string>
 </resources>

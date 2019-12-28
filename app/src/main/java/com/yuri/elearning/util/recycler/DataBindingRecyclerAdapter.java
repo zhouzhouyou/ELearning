@@ -13,6 +13,7 @@ import androidx.databinding.ViewDataBinding;
 public abstract class DataBindingRecyclerAdapter<DB extends ViewDataBinding, T>
         extends BaseRecyclerAdapter<DataBindingRecyclerViewHolder, T> {
     private int brId;
+    protected DB db;
 
     /**
      * This adapter is used with data binding.
@@ -36,17 +37,17 @@ public abstract class DataBindingRecyclerAdapter<DB extends ViewDataBinding, T>
         this.brId = brId;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull DataBindingRecyclerViewHolder holder, int position) {
-        Log.i(TAG, "onBindViewHolder: " + position);
-        bindVH(holder, position);
-    }
+//    @Override
+//    public void onBindViewHolder(@NonNull DataBindingRecyclerViewHolder holder, int position) {
+//        Log.i(TAG, "onBindViewHolder: " + position);
+//        bindVH(holder, position);
+//    }
 
     @NonNull
     @Override
     public DataBindingRecyclerViewHolder<DB> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.i(TAG, "onCreateViewHolder: ");
-        DB db = DataBindingUtil.inflate(layoutInflater, layoutId, parent, false);
+        db = DataBindingUtil.inflate(layoutInflater, layoutId, parent, false);
         initViewHolder(db);
         return new DataBindingRecyclerViewHolder<>(db.getRoot());
     }

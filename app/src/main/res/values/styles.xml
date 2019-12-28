@@ -20,7 +20,7 @@
     
     <style name="course_title">
         <item name="android:textSize">@dimen/title_text_size</item>
-        <item name="android:textStyle">bold</item>
+<!--        <item name="android:textStyle">bold</item>-->
     </style>
 
 </resources>

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.yuri.elearning.MainActivity;
+import com.yuri.elearning.view.MainActivity;
 import com.yuri.elearning.util.App;
 import com.yuri.elearning.util.SPUtils;
 import com.yuri.elearning.util.language.LanguageUtil;

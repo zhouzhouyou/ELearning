@@ -45,5 +45,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    implementation 'com.google.android.exoplayer:exoplayer:2.9.5'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.9.6'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
 
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    implementation 'com.github.bumptech.glide:recyclerview-integration:4.10.0'
 }
