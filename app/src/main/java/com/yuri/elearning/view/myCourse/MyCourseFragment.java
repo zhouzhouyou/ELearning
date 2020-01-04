@@ -65,7 +65,7 @@ public class MyCourseFragment extends ViewModelFragment<MyCourseViewModel> {
 
     @Override
     protected int getLayout() {
-        return R.layout.course_recycler;
+        return R.layout.my_course_fragment;
     }
 
     private class CourseAdapter extends DataBindingRecyclerAdapter<CourseRecyclerItemBinding, CourseBriefInfo> {

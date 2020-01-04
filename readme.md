@@ -4,6 +4,16 @@
 
 E-learning is a platform that provides courses to students. In our app, students can explore courses, study and communicate.
 
+Please refer to readme.html for mermaid is not supported by Github.
+
+Screenshots are in /assets
+
+# Technology
+
+Jet Pack: Data Binding, Navigation, View Model, Room
+
+JUnit
+
 # Brief Design
 
 The app can be divided into these main functions:
