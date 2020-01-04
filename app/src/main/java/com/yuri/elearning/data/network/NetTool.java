@@ -19,7 +19,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetTool {
-    private static final String PORT = "http://192.168.1.243:8848/";
+    private static final String PORT = "http://122.51.247.44:8848/";
     public static final String RESOURCE_URL = PORT + "resource/";
 
     private static final String BASE_URL = PORT + "api/";
