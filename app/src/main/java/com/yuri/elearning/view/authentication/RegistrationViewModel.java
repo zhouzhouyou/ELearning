@@ -3,6 +3,7 @@ package com.yuri.elearning.view.authentication;
 import android.app.Application;
 
 import com.yuri.elearning.data.datasource.UserDataSource;
+import com.yuri.elearning.data.repository.UserRepository;
 import com.yuri.elearning.util.App;
 import com.yuri.elearning.util.base.BaseViewModel;
 
@@ -26,6 +27,8 @@ public class RegistrationViewModel extends BaseViewModel {
             @Override
             public void onSuccess(Integer integer) {
                 registrationState.postValue(RegistrationState.REGISTRATION_COMPLETED);
+                UserRepository.ID = integer;
+                UserRepository.MONEY = 0.0;
             }
 
             @Override

@@ -117,7 +117,7 @@ public class LoginFragment extends ViewModelFragment<LoginViewModel> {
     }
 
     private void handleRegister() {
-//        mRegisterButton.setOnClickListener(v -> mNavController.navigate(R.id.action_loginFragment_to_register_navigation));
+        mRegisterButton.setOnClickListener(v -> mNavController.navigate(R.id.nav_sign_up));
     }
 
     private void handleBackPressed() {

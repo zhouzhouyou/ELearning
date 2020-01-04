@@ -1,7 +1,5 @@
 [TOC]
 
-Emoji :zero: means I have do nothing yet, :keycap_ten: means I have finished it.
-
 # Introduction
 
 E-learning is a platform that provides courses to students. In our app, students can explore courses, study and communicate.
@@ -30,7 +28,7 @@ graph TD;
 	E --> G[Web Server];
 ```
 
-# Activity/Fragment :two:
+# Activity/Fragment
 
 In my architecture, there is only one main activity. All other views are switched in the activity.
 	
@@ -38,93 +36,92 @@ Thanks to Google’s new navigation method, I just add all navigation destinatio
 	
 Main navigation method is use navigation drawer.
 
-## Home :three:
+## Home
 
-### Channel :zero:
+### Category
 
 In order to help student choose specific type of courses, we can divide all courses into different categories.
 
-### Recommend :six:
+### Recommend
 
 Show recommend courses to students.
 
-### Timeline :zero:
-
-Show your courses’ news or so on.
-
-## Course :one:
+## Course
 
 Show courses’ information, register and study.
 
-## My Courses :zero:
+## My Courses
 
 Show courses you registered only.
 
-## Calendar :zero:
+## Calendar
 
 Show your courses’ date.
 
-## Authentication :four:
+## Authentication
 
-### Profile :zero:
+### Profile
 
 Show user’s profile and edit.
 
 If not authenticated, navigate to login.
 
-### Login :eight:
+### Login
 
 Login to account.
 
 If press back, navigate to home.
 
-### Register :five:
+### Register
 
-#### Profile Data :eight:
-
-input user’s name.
-
-#### User Password :eight:
+#### User Password
 
 input user’s account and password.
 
-## Setting :three:
+## Setting
 
-### log out :six:
+### change language
 
-### change language :six:
-
-## Message :zero:
-
-Under planning..., may be abandoned.
-
-# ViewModel :four:
+# ViewModel
 
 > The [`ViewModel`][ViewModel] class is designed to store and manage UI-related data in a lifecycle conscious way. The [`ViewModel`][ViewModel] class allows data to survive configuration changes such as screen rotations. 
 
 ViewModel can store some `LiveData`, so activities and fragments can observe the data change and do UI or other operations, just like the Observe Pattern.
 
-## `CourseViewModel` :three:
+## `CourseViewModel`
 
 handle CRUD of courses.
 
-## `UserViewModel` :three:
+## `UserViewModel`
 
 handle CRUD if user.
 
-## `RegistrationViewModel` :five:
+## `RegistrationViewModel`
 
 handle Registration of user.
 
-## `LoginViewModel` :five:
+## `LoginViewModel`
 
 handle Login of user.
 
-# Repository :four:
+## `CalendarViewModel`
 
-To decoupled ViewModel from database and network, the repository controls them.  It decreases the maintain work if I add net server support later.
-	
-## Model-Room :eight:
+handle lessons of current month.
+
+# Repository
+
+
+```mermaid
+graph TD;
+A[Repositry] --> B[Remote];
+A-->C[Local];
+B-->Retrofit;
+C-->Room;
+```
+
+
+
+## Model-Room
 
 > Room provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite. 
 
@@ -140,9 +137,9 @@ graph TD;
 Just like mybatis with Spring, Room help me reduce code to CRUD.
 	
 
-## Remote Data Source :zero:
+## Remote Data Source
 
-I will develop it in Spring.
+Retrofit
 
 [ViewModel]: https://developer.android.com/reference/androidx/lifecycle/ViewModel.html
 
