@@ -10,6 +10,9 @@ import com.yuri.elearning.data.database.datasource.LocalLessonDataSource;
 import com.yuri.elearning.data.datasource.LessonDataSource;
 import com.yuri.elearning.data.network.datasource.RemoteLessonDataSource;
 import com.yuri.elearning.model.Lesson;
+import com.yuri.elearning.model.LessonBriefInfo;
+
+import java.util.List;
 
 public class LessonRepository implements LessonDataSource {
     private static final String TAG = "LessonRepository";
@@ -48,8 +51,40 @@ public class LessonRepository implements LessonDataSource {
 
                 @Override
                 public void onFailed(String errorMessage) {
+                    callback.onFailed(errorMessage);
                 }
             }, id);
+        }
+    }
+
+    @Override
+    public void getCalendar(Context context, int uid, int year, int month, GetCalendarCallback callback) {
+        Log.d(TAG, "getCalendar: ");
+        NetworkInfo info = ((ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        if (info != null && info.isConnected()) {
+            remote.getCalendar(context, uid, year, month, new GetCalendarCallback() {
+                @Override
+                public void onSuccess(List<LessonBriefInfo> lessons) {
+                    callback.onSuccess(lessons);
+                }
+
+                @Override
+                public void onFailed(String errorMessage) {
+                    callback.onFailed(errorMessage);
+                }
+            });
+        } else {
+            local.getCalendar(context, uid, year, month, new GetCalendarCallback() {
+                @Override
+                public void onSuccess(List<LessonBriefInfo> lessons) {
+                    callback.onSuccess(lessons);
+                }
+
+                @Override
+                public void onFailed(String errorMessage) {
+                    callback.onFailed(errorMessage);
+                }
+            });
         }
     }
 }

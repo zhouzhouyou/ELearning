@@ -67,6 +67,7 @@
     <string name="remained">remained</string>
     <string name="money">money</string>
     <string name="charge">charge</string>
+    <string name="time">time</string>
     <string-array name="languages">
         <item>@string/default_language</item>
         <item>@string/simplified_chinese</item>

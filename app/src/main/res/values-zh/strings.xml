@@ -52,4 +52,9 @@
     <string name="content">内容</string>
     <string name="buy">购买</string>
     <string name="title">标题</string>
+    <string name="charge">充值</string>
+    <string name="money">金钱</string>
+    <string name="name">名字</string>
+    <string name="remained">剩余</string>
+    <string name="time">时间</string>
 </resources>

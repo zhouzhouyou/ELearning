@@ -61,6 +61,11 @@ public class LocalLessonDataSource extends AbstractLocalDataSource implements Le
         }
     }
 
+    @Override
+    public void getCalendar(Context context, int uid, int year, int month, GetCalendarCallback callback) {
+
+    }
+
     public void insertLesson(Lesson lesson) {
         new insertLessonTask(mLessonDao).execute(lesson);
     }

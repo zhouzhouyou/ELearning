@@ -31,7 +31,7 @@
         android:id="@+id/nav_myClasses"
         android:name="com.yuri.elearning.view.myCourse.MyCourseFragment"
         android:label="@string/my_classes"
-        tools:layout="@layout/my_classes_fragment" />
+        tools:layout="@layout/course_recycler" />
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.yuri.elearning.view.settings.SettingsFragment"
