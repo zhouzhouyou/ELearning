@@ -4,9 +4,9 @@
 
 E-learning is a platform that provides courses to students. In our app, students can explore courses, study and communicate.
 
-Please refer to readme.html for mermaid is not supported by Github.
+Please refer to **[readme.pdf](./readme.pdf)** for mermaid is not supported by Github.
 
-Screenshots are in /assets
+[Screenshot](./assets)
 
 # Technology
 
